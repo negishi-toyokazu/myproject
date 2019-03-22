@@ -15,7 +15,7 @@
     return view('welcome');
 });*/
 
-Route::group(['prefix' => 'question'], function() {
+Route::group(['prefix' => 'question','middleware' =>  'auth'], function() {
 //toppage
 Route::get('/', 'QuestionController@add');
 Route::post('/', 'QuestionController@create');
@@ -36,3 +36,7 @@ Route::post('/register', 'QuestionController@postRegister');
 Route::get('/login', 'QuestionController@getLogin');
 Route::post('/login', 'QuestionController@postLogin');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
