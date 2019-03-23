@@ -1,12 +1,6 @@
-<html>
-  <head>
-    <title>新規登録画面</title>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  </head>
-
-  <body>
+@extends('layouts.layout')
+@section('title', '新規登録画面')
+@section('content')
       <form class="form-horizontal" action='' method="POST">
         <fieldset>
           <div id="legend">
@@ -55,6 +49,5 @@
           </div>
         </div>
         </fieldset>
-        </form>
-    </body>
-</html>
+      </form>
+@endsection

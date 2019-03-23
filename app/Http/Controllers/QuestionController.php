@@ -54,11 +54,11 @@ class QuestionController extends Controller
       return redirect('question');
     }
     //ログイン
-    public function getLogin ()
+    public function getSignin ()
     {
-      return view('question.login');
+      return view('question.sighin');
     }
-    public function postLogin ()
+    public function postSignin ()
     {
       return direct('question');
     }

@@ -49173,17 +49173,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/login.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/login.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/sass/question.scss":
 /*!**************************************!*\
   !*** ./resources/sass/question.scss ***!
@@ -49195,17 +49184,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/sighin.scss":
+/*!************************************!*\
+  !*** ./resources/sass/sighin.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/question.scss ./resources/sass/login.scss ***!
-  \************************************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/question.scss ./resources/sass/sighin.scss ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/question.scss */"./resources/sass/question.scss");
-module.exports = __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/login.scss */"./resources/sass/login.scss");
+module.exports = __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/sighin.scss */"./resources/sass/sighin.scss");
 
 
 /***/ })

@@ -30,11 +30,11 @@ Route::get('/mypage', 'QuestionController@mypage')->name('mypage');
 Route::get('/detail', 'QuestionController@detail')->name('detail');
 Route::post('/detail', 'QuestionController@status');
 //新規登録
-Route::get('/register', 'QuestionController@getRegister')->name('register');
+Route::get('/register', 'QuestionController@getRegister')->name('touroku');
 Route::post('/register', 'QuestionController@postRegister');
 //ログイン
-Route::get('/login', 'QuestionController@getLogin')->name('login');
-Route::post('/login', 'QuestionController@postLogin');
+Route::get('/sighin', 'QuestionController@getSignin')->name('setuzoku');
+Route::post('/signin', 'QuestionController@postSignin');
 });
 
 Auth::routes();
