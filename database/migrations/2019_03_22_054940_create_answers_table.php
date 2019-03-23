@@ -19,6 +19,7 @@ class CreateAnswersTable extends Migration
             $table->string('answer');
             $table->integer('category_id');
             $table->integer('user_id');
+            $table->integer('question_id');
             $table->timestamps();
         });
     }

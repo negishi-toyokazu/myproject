@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 @section('title', '新規登録画面')
 @section('content')
-      <form class="form-horizontal" action='' method="POST">
+<link href="{{ asset('css/sighin.css') }}" rel="stylesheet">
+  <div class="container">
+    <form class="form-horizontal" action='' method="POST">
         <fieldset>
           <div id="legend">
           <legend class="">新規登録画面</legend>
@@ -45,9 +47,10 @@
         <div class="control-group">
           <!-- Button -->
           <div class="controls">
-            <button class="btn btn-success">登録する</button>
+            <button class="btn btn-danger">登録する</button>
           </div>
         </div>
         </fieldset>
       </form>
+    </div>
 @endsection

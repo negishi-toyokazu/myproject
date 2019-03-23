@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //
+  public function userName()
+  {
+      return $this->belongsTo('App\UserName');
+  }
+
+  public function category()
+  {
+      return $this->belongsTo('App\Category');
+  }
+
+  public function answer()
+  {
+      return $this->belongsTo('App\Answer');
+  }
 }

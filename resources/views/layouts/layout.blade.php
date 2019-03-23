@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- ファビコン --}}
+    <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">
 
     <title>@yield('title')</title>
 
@@ -30,9 +32,6 @@
         <a class="navbar-brand" href="{{ route('top')}}">TOP</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('touroku')}}">新規登録</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
                 </li>
@@ -43,13 +42,14 @@
         </div>
         <form class="form-inline">
             <input class="form-control mr-sm-1" type="search">
+            <button class="btn btn-primary" type="submit" formaction="{{ route('touroku')}}">新規登録</button>
             <button class="btn btn-primary" type="submit" formaction="{{ route('setuzoku')}}">ログイン</button>
         </form>
     </nav>
               {{-- ここまでナビゲーションバー --}}
 
               <main class="py-4">
-                  {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
+                  {{-- コンテンツをここに入れる --}}
                   @yield('content')
               </main>
           </div>

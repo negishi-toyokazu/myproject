@@ -1,8 +1,5 @@
 body {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: white;
-  color: #fff;
+  background: #eee url(http://subtlepatterns.com/patterns/leaves.png);
 }
 
 .navbar-brand {
@@ -11,5 +8,9 @@ body {
 
 .nav-link {
   color: white !important;
+}
+
+.btn {
+  margin: 0 10px 0 10px;
 }
 

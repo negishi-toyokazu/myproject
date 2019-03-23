@@ -18,7 +18,6 @@ class CreateQuestionsTable extends Migration
             $table->string('user_name');
             $table->string('question');
             $table->string('status');
-            $table->integer('answer_id');
             $table->integer('category_id');
             $table->integer('user_id');
             $table->timestamps();
