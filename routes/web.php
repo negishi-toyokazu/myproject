@@ -32,6 +32,9 @@ Route::post('/detail', 'QuestionController@status');
 //新規登録
 Route::get('/register', 'QuestionController@getRegister')->name('touroku');
 Route::post('/register', 'QuestionController@postRegister');
+
+//新規登録完了
+Route::get('/register/conp', 'QuestionController@conpRegister');
 //ログイン
 Route::get('/sighin', 'QuestionController@getSignin')->name('setuzoku');
 Route::post('/signin', 'QuestionController@postSignin');

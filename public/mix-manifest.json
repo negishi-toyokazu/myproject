@@ -2,5 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/question.css": "/css/question.css",
-    "/css/sighin.css": "/css/sighin.css"
+    "/css/sighin.css": "/css/sighin.css",
+    "/css/register.css": "/css/register.css",
+    "/css/top.css": "/css/top.css",
+    "/css/mypage.css": "/css/mypage.css"
 }

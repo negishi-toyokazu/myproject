@@ -1,16 +1,16 @@
 @extends('layouts.layout')
-@section('title', '新規登録画面')
+@section('title', 'ログイン画面')
 @section('content')
 
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="{{ asset('css/sighin.css') }}" rel="stylesheet">
     <script src="{{ asset('sighin/app.js') }}" defer></script>
 
     <div class="container">
     	<div class="login-container">
+        <h3>ログイン画面</h3>
                 <div id="output"></div>
                 <div class="avatar"></div>
                 <div class="form-box">

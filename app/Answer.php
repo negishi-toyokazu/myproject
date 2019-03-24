@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    public function userName()
+    public function user()
     {
-        return $this->belongsTo('App\UserName');
+        return $this->belongsTo('App\User');
     }
 
     public function category()
