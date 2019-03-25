@@ -20,4 +20,8 @@ class Question extends Model
   {
       return $this->belongsTo('App\Answer');
   }
+
+  public static $rules = array(
+    'question' => 'required',
+  );
 }
