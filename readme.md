@@ -27,3 +27,13 @@ https://wireframe.cc/nzihrU
 
 ユースケース図
 https://www.draw.io/#G1wcvG-9zvXBIi3RgZEQxCDljjK6XKALaj
+
+db
+データ型
+https://gyazo.com/5b11a2648f362d54ef537ca32259b39d
+
+論理型
+https://gyazo.com/54a362585646ec2b78f8d9f563bb2c0e
+
+リレーション
+https://gyazo.com/1212b14533f7f4cedff2c4a8a9a032fb
