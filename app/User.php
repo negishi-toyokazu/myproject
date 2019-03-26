@@ -40,13 +40,13 @@ class User extends Authenticatable
     ];
 
 //追加
-    protected $guarded = ('id');
+    /*protected $guarded = ('id');
 
     public static $rules = array(
       'name' => 'required',
       'email' => 'required',
       'password' => 'required',
-    );
+    );*/
 
     public function questions()
     {

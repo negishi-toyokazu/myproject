@@ -4,24 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Question;
+use App\Category;
+
 
 class QuestionController extends Controller
 {
     //toppage
     public function add()
     {
-        return view('question.index');
+        $categories = Category::all();
+        return view('question.index', compact('categories'));
     }
-    public function create()
+    
+    public function submitQuestion(Request $request)
     {
+      $this->validate($request, Question::$rules);
+      $question = new Question;
+      $form = $request->all();
+      $question->fill($form);
+      $question->save();
+
         return redirect('question');
     }
 
     //質問一覧
     public function list()
     {
-        return view('question.list');
+      $questions = Question::all();
+      return view('question.list', compact('questions'));
     }
+
 
     //質問内容
     public function content()
@@ -81,7 +94,7 @@ class QuestionController extends Controller
     public function postSignin(Request $request)
     {
         $this->validate($request, User::$rules);
-        
+
         return direct('question');
     }
 }

@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+  protected $guarded = array('id');
+
+
+    public static $rules = array(
+        'question' => 'required',
+        'user_name' => 'required',
+    );
+
+
+
+    protected $fillable = [
+        'user_name', 'question', ];
+
   public function user()
   {
       return $this->belongsTo('App\User');
@@ -21,7 +34,5 @@ class Question extends Model
       return $this->belongsTo('App\Answer');
   }
 
-  public static $rules = array(
-    'question' => 'required',
-  );
+
 }

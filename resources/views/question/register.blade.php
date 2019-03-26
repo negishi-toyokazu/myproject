@@ -9,7 +9,7 @@
   <div class="container">
     <h2>新規登録</h2>
     <div class="register-container">
-    <form method="post" action="{{ action('QuestionController@postRegister') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ action('Auth\RegisterController@create') }}" enctype="multipart/form-data">
 
       <div class="form-group row justify-content-center">
           <lavel for="name">ユーザー名</label>

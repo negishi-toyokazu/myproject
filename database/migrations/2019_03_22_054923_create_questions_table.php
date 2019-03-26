@@ -14,13 +14,18 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('user_name');
             $table->string('question');
-            $table->string('status');
-            $table->integer('category_id');
-            $table->integer('user_id');
+            $table->string('status')->nullable();
+            $table->integer('category_id')->unsigned()->nullable();//->default(0);
+            $table->integer('user_id')->unsigned()->nullable();//->default(1);
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('category_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -31,6 +36,7 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+      Schema::dropIfExists('questions');
+
     }
 }

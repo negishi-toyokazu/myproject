@@ -15,10 +15,10 @@
     return view('welcome');
 });*/
 
-Route::group(['prefix' => 'question','middleware' =>  'auth'], function() {
+Route::group(['prefix' => 'question'], function() {
 //toppage
 Route::get('/', 'QuestionController@add')->name('top');
-Route::post('/', 'QuestionController@create');
+Route::post('/', 'QuestionController@submitQuestion');
 //質問一覧
 Route::get('/list', 'QuestionController@list')->name('list');
 //質問内容
@@ -30,8 +30,8 @@ Route::get('/mypage', 'QuestionController@mypage')->name('mypage');
 Route::get('/detail', 'QuestionController@detail')->name('detail');
 Route::post('/detail', 'QuestionController@status');
 //新規登録
-Route::get('/register', 'QuestionController@getRegister')->name('touroku');
-Route::post('/register', 'QuestionController@postRegister');
+Route::get('/register', 'Auth\RegisterController@getRegister')->name('touroku');
+Route::post('/register', 'Auth\RegisterController@create');
 
 //新規登録完了
 Route::get('/register/conp', 'QuestionController@conpRegister');

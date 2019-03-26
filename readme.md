@@ -37,3 +37,27 @@ https://gyazo.com/54a362585646ec2b78f8d9f563bb2c0e
 
 リレーション
 https://gyazo.com/1212b14533f7f4cedff2c4a8a9a032fb
+
+insert into categories(category,class) values('ナス','野菜');
+insert into questions(category,class) values('','');
+insert into categories(category,class) values('ほうれん草','野菜');
+insert into categories(category,class) values('りんご','果物');
+
+update categories set category ='人参' where id = 1;
+
+up
+Schema::table('questions', function (Blueprint $table) {
+    $table->foreign('user_id')
+    ->references('id')->on('users')
+    ->onDelete('cascade');
+
+    $table->foreign('category_id')
+    ->references('id')->on('categories')
+    ->onDelete('cascade');
+});
+
+
+down
+Schema::table('questions', function (Blueprint $table) {
+    $table->dropForeign('questions_user_id_foreign');
+});
