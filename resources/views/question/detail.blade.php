@@ -3,7 +3,7 @@
 @section('content')
 <link href="{{ asset('css/detail.css') }}" rel="stylesheet">
 
-<div class="container">
+
   <div class="col-md-8">
     <div class="item">
      <h2>質問詳細</h2>
@@ -31,5 +31,5 @@
       　　</div>
     　　</div>
     </div>
-</div>
+
 @endsection

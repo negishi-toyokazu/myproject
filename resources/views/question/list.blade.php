@@ -2,7 +2,7 @@
 @section('title', '農家に聞こう')
 @section('content')
 
-<div class="container">
+
   <h2 class="my-3">質問一覧</h2>
     <div class="col">
       {{--質問一覧テーブル--}}
@@ -16,10 +16,11 @@
             <tbody>
               @foreach($questions as $recode)
                 <tr>
-                    <th><a href="#">{{$recode->question}}</a></th>
+                    <th><a class="text-info" href="{{ route('content')}}">{{$recode->question}}</a></th>
                 </tr>
               @endforeach
             </tbody>
           </table>
         </div>
+      </div>
 @endsection

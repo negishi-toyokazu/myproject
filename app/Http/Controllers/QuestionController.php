@@ -13,8 +13,11 @@ class QuestionController extends Controller
     //toppage
     public function add()
     {
-        $categories = Category::all();
-        return view('question.index', compact('categories'));
+      $yasais = Category::where('class','=', '野菜')->get();
+      $fruits = Category::where('class','=', '果物')->get();
+
+        //$categories = Category::all();
+        return view('question.index', compact('yasais', 'fruits'));
     }
 
     public function submitQuestion(Request $request)

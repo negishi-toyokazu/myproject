@@ -14,3 +14,11 @@ body {
   margin: 0 10px 0 10px;
 }
 
+.container h1 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+

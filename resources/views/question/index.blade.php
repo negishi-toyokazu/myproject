@@ -3,7 +3,7 @@
 @section('content')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
 
-<div class="container">
+
   <div class="logo">
   <a href="{{ route('top')}}"><img src="{{ asset('image/logo1.png') }}" class="mx-auto d-block" width="480" height="151"></a>
   </div>
@@ -50,8 +50,8 @@
               </div>
               <div class="card-body">
                 <ul class="list-group">
-                  @foreach($categories as $recode)
-                    <li><a href="#">{{$recode->category}}</a></li>
+                  @foreach($yasais as $yasai)
+                    <li><a href="#">{{$yasai->category}}</a></li>
                   @endforeach
                 </ul>
               </div>
@@ -68,13 +68,13 @@
               </div>
               <div class="card-body">
                 <ul class="list-group">
-                  @foreach($categories as $recode)
-                    <li><a href="#">{{$recode->category}}</a></li>
+                  @foreach($fruits as $fruit)
+                    <li><a href="#">{{$fruit->category}}</a></li>
                   @endforeach
                 </ul>
               </div>
         　　</div>
       </div>
       </div>
-    </div>
+
     @endsection

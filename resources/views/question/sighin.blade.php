@@ -8,8 +8,8 @@
     <link href="{{ asset('css/sighin.css') }}" rel="stylesheet">
     <script src="{{ asset('sighin/app.js') }}" defer></script>
 
-    <div class="container">
-    	<div class="login-container">
+
+    	<div class="login-item">
         <h3>ログイン画面</h3>
                 <div id="output"></div>
                 <div class="avatar"></div>
@@ -21,7 +21,4 @@
                     </form>
                 </div>
             </div>
-
-    </div>
-
 @endsection

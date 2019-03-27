@@ -1,16 +1,16 @@
 @extends('layouts.layout')
 @section('title', '農家に聞こう')
 @section('content')
-<link href="{{ asset('css/mypage.css') }}" rel="stylesheet">
 
-<div class="container">
+
+
   <h2 class="my-3">マイページ</h2>
     <div class="col">
       {{--質問--}}
 
-        <div class="question-table mb-5">
+        <div class="question-table mb-5 p-3 bg-light">
           <p>投稿した質問一覧</p>
-          <table class="table table-hover table-bordered ">
+          <table class="table table-hover table-bordered">
             <thead class="thead-light">
               <tr class="font-weight-bold">
                 <th>日時</th>
@@ -35,7 +35,7 @@
         </div>
         {{--回答--}}
 
-            <div class="answer-table ">
+            <div class="answer-table p-3 bg-light">
               <p>回答した質問一覧</p>
               <table class="table table-hover table-bordered">
                 <thead class="thead-light">
@@ -53,5 +53,5 @@
               </table>
             </div>
      </div>
-  </div>
+
 @endsection

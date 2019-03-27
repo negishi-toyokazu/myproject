@@ -6,9 +6,9 @@
 <link href="{{ asset('css/register.css') }}" rel="stylesheet">
 
 
-  <div class="container">
+
     <h2>新規登録</h2>
-    <div class="register-container">
+    <div class="register-item">
     <form method="post" action="{{ action('Auth\RegisterController@create') }}" enctype="multipart/form-data">
 
       <div class="form-group row justify-content-center">
@@ -37,5 +37,5 @@
           </div>
       </form>
     </div>
-  </div>
+
 @endsection

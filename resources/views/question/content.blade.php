@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 @section('title', '農家に聞こう')
 @section('content')
-<div class="container">
+
   <h2>質問詳細(一般)</h2>
   <div class="col-md-8">
-  <div class="item bg-light">
+  <div class="item bg-light p-2 my-4">
 
 
     {{--　質問内容 --}}
@@ -25,7 +25,7 @@
 
       <div class="card bg-light p-3">
 
-          <form action="{{ action('QuestionController@submitQuestion')}}" method="post" enctype="multipart/form-data">
+          <form action="#" method="post" enctype="multipart/form-data">
             @csrf
             @if (count($errors) > 0)
                 <ul>
@@ -47,7 +47,13 @@
           </form>
         </div>
         {{-- 回答 --}}
+
       </div>
-    </div>
-    </div>
+      <div class="row">
+      <div class="mx-auto">
+        <button class="btn btn-outline-primary btn-lg rounded-pill" type="submit" formaction="#">一覧に戻る</button>
+      </button>
+     </div>
+     </div>
+  </div>
 @endsection
