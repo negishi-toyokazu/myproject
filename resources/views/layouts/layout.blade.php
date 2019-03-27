@@ -45,7 +45,6 @@
             </ul>
         </div>
         <form class="form-inline">
-            <input class="form-control mr-sm-1" type="search">
             <button class="btn btn-info" type="submit" formaction="{{ route('touroku')}}">新規登録</button>
             <button class="btn btn-info" type="submit" formaction="{{ route('setuzoku')}}">ログイン</button>
         </form>

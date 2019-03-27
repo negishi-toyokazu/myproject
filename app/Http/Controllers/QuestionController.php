@@ -16,7 +16,7 @@ class QuestionController extends Controller
         $categories = Category::all();
         return view('question.index', compact('categories'));
     }
-    
+
     public function submitQuestion(Request $request)
     {
       $this->validate($request, Question::$rules);
@@ -50,7 +50,8 @@ class QuestionController extends Controller
     //mypage
     public function mypage()
     {
-        return view('question.mypage');
+        $questions = Question::all();
+        return view('question.mypage', compact('questions'));
     }
 
     //質問詳細(投稿者向け)

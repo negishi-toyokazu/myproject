@@ -4,7 +4,9 @@
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
 
 <div class="container">
-  <h1>農家に聞こう</h1>
+  <div class="logo">
+  <a href="{{ route('top')}}"><img src="{{ asset('image/logo1.png') }}" class="mx-auto d-block" width="480" height="151"></a>
+  </div>
 {{--質問投稿フォーム--}}
   <div class="col-md-8">
     <div class="question-item my-5">
