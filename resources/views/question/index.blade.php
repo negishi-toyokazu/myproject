@@ -23,12 +23,12 @@
                 </ul>
             @endif
             <div class="user-content my-3 col-md-6">
-              <label for="#">ユーザー名</label>
+              <h4>ユーザー名</h4>
               <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名"  required>
             </div>
             <div class="question-content mx-3 mb-3 ">
-              <label for="#">質問内容</label>
-              <textarea type="text" class="form-control"  rows="5"　placeholder="質問内容" name="question" required></textarea>
+              <h4>質問内容</h4>
+              <textarea type="text" class="form-control"  rows="5"　name="question"　placeholder="内容"　required></textarea>
               </div>
               <div class="botton-content float-right">
 
@@ -46,7 +46,9 @@
           <div class="category-card bg-light">
             <div class="content">
               <div class="card-header">
-                <h4 class="card-title">野菜</h4>
+                <h4 class="card-title">
+                  <i class="fas fa-pepper-hot nasu"></i></i> 野菜</i>
+                </h4>
               </div>
               <div class="card-body">
                 <ul class="list-group">
@@ -64,7 +66,9 @@
           <div class="category-card bg-light">
             <div class="content">
               <div class="card-header">
-                <h4 class="card-title">果物</h4>
+                <h4 class="card-title">
+                  <i class="fas fa-apple-alt apple"></i> 果物</i>
+                </h4>
               </div>
               <div class="card-body">
                 <ul class="list-group">

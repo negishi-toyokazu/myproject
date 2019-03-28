@@ -13,8 +13,8 @@ class QuestionController extends Controller
     //toppage
     public function add()
     {
-      $yasais = Category::where('class','=', '野菜')->get();
-      $fruits = Category::where('class','=', '果物')->get();
+      $yasais = Category::where('class', '野菜')->get();
+      $fruits = Category::where('class', '果物')->get();
 
         //$categories = Category::all();
         return view('question.index', compact('yasais', 'fruits'));
@@ -40,9 +40,11 @@ class QuestionController extends Controller
 
 
     //質問内容
-    public function content()
+    public function content(Request $request,$id)
     {
-        return view('question.content');
+        $question_id= Question::find($request->id);
+        return view('question.content', ['question_content' => $question_id]);
+
     }
 
     public function answer()

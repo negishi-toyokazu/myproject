@@ -6,23 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/question.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- ファビコン --}}
-    <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">
+    {{--font--}}
+    
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" type="text/css">
 
-    <title>@yield('title')</title>
-
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    {{-- ファビコン --}}
+    <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">
+
+    <title>@yield('title')</title>
+
+
   </head>
 
   <body>
+
     <div id="app">
       {{-- ナビゲーションバー --}}
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">

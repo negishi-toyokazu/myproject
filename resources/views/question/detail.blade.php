@@ -8,27 +8,23 @@
     <div class="item">
      <h2>質問詳細</h2>
         <div class="card bg-light mb-3 mt-3">
-          <div class="content">
             <div class="card-head">
-              <h4 class="card-title">質問内容</h4>
+              <h5 class="card-title">質問内容</h5>
             </div>
             <div class="card-body">
               <p class="card-text"></p>
             </div>
       　　</div>
         </div>
-      </div>
     <div class="item">
       <h2>回答一覧</h2>
-        <div class="card bg-light mb-3 mt-3">
-      　　<div class="content">
+        <div class="card bg-light mb-3">
             <div class="card-head">
-              <h4 class="card-title">回答内容</h4>
+              <h5 class="card-title">回答内容</h5>
             </div>
             <div class="card-body">
               <p class="card-text"></p>
             </div>
-      　　</div>
     　　</div>
     </div>
 

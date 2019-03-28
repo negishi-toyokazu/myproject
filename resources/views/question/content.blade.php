@@ -13,7 +13,7 @@
      <div class="card bg-light mb-3 mt-3">
        <div class="content">
          <div class="card-body">
-           <p class="card-text">ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー</p>
+           <p class="card-text">{{$question_content->question}}</p>
          </div>
    　　</div>
      </div>
@@ -51,7 +51,10 @@
       </div>
       <div class="row">
       <div class="mx-auto">
-        <button class="btn btn-outline-primary btn-lg rounded-pill" type="submit" formaction="#">一覧に戻る</button>
+        <button class="btn btn-outline-primary btn-lg rounded-pill" type="submit" formaction="#">
+          <i class="fas fa-undo-alt"></i>
+           一覧に戻る
+         </button>
       </button>
      </div>
      </div>

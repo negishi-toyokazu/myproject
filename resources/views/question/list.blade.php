@@ -6,7 +6,7 @@
   <h2 class="my-3">質問一覧</h2>
     <div class="col">
       {{--質問一覧テーブル--}}
-        <div class="question-table mb-5">
+        <div class="question-table mb-5 bg-light">
           <table class="table">
             <thead class="thead-light">
               <tr class="font-weight-bold">
@@ -16,7 +16,7 @@
             <tbody>
               @foreach($questions as $recode)
                 <tr>
-                    <th><a class="text-info" href="{{ route('content')}}">{{$recode->question}}</a></th>
+                    <th><a class="text-info" href="{{ route('content') }}">{{$recode->question}}</a></th>
                 </tr>
               @endforeach
             </tbody>

@@ -1,5 +1,14 @@
 body{background: #eee url(http://subtlepatterns.com/patterns/leaves.png);}
 
+// Font
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;subset=japanese');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
 
 .navbar-brand {
   color: white !important;

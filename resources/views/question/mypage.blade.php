@@ -5,11 +5,12 @@
 
 
   <h2 class="my-3">マイページ</h2>
-    <div class="col">
+
       {{--質問--}}
 
         <div class="question-table mb-5 p-3 bg-light">
-          <p>投稿した質問一覧</p>
+          <h4 class="my-3">投稿した質問一覧</h4>
+          <div class="table-responsive">
           <table class="table table-hover table-bordered">
             <thead class="thead-light">
               <tr class="font-weight-bold">
@@ -26,17 +27,19 @@
                   <th class="font-weight-light">{{$record->created_at}}</th>
                   <td>未解決</td>
                   <td>{{$record->question}}</td>
-                  <td><a class="btn btn-success btn-sm" href="{{ route('detail')}}" role="button">詳細</a></td>
+                  <td><a class="btn btn-success" href="{{ route('detail')}}" role="button">詳細</a></td>
                   <td>0件</td>
                 </tr>
               @endforeach
             </tbody>
           </table>
         </div>
+        </div>
         {{--回答--}}
 
             <div class="answer-table p-3 bg-light">
-              <p>回答した質問一覧</p>
+              <h4 class="my-3">回答した質問一覧</h4>
+              <div class="table-responsive">
               <table class="table table-hover table-bordered">
                 <thead class="thead-light">
                   <tr>
@@ -51,7 +54,8 @@
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
-     </div>
+
 
 @endsection
