@@ -13,7 +13,9 @@
      <div class="card bg-light mb-3 mt-3">
        <div class="content">
          <div class="card-body">
-           <p class="card-text">{{$question_content->question}}</p>
+           <p class="card-text">
+             {{ $question->question }}
+           </p>
          </div>
    　　</div>
      </div>
@@ -46,16 +48,15 @@
               </div>
           </form>
         </div>
-        {{-- 回答 --}}
+        {{-- 一覧に戻るボタン --}}
 
       </div>
       <div class="row">
       <div class="mx-auto">
-        <button class="btn btn-outline-primary btn-lg rounded-pill" type="submit" formaction="#">
+        <a href="{{ route('list')}}" class="btn btn-outline-primary">
           <i class="fas fa-undo-alt"></i>
            一覧に戻る
-         </button>
-      </button>
+         </a>
      </div>
      </div>
   </div>

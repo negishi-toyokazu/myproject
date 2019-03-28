@@ -40,10 +40,12 @@ class QuestionController extends Controller
 
 
     //質問内容
-    public function content(Request $request,$id)
+    public function content(Request $request, $id)
     {
-        $question_id= Question::find($request->id);
-        return view('question.content', ['question_content' => $question_id]);
+        $question = Question::find($id);
+        //$question_id= Question::find($request->id);
+        //$question_content = Question::where('id', '$question_id')->get();
+        return view('question.content', compact('question'));
 
     }
 

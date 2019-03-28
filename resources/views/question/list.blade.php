@@ -16,7 +16,11 @@
             <tbody>
               @foreach($questions as $recode)
                 <tr>
-                    <th><a class="text-info" href="{{ route('content') }}">{{$recode->question}}</a></th>
+                  <th>
+                    <a class="text-info" href="{{ route('content') }}">
+                     {{$recode->question}}
+                    </a>
+                  </th>
                 </tr>
               @endforeach
             </tbody>
