@@ -18,8 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->string('user_name');
             $table->string('question');
             $table->string('status')->nullable();
-            $table->integer('category_id')->unsigned()->nullable();//->default(0);
-            $table->integer('user_id')->unsigned()->nullable();//->default(1);
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->index('user_id');

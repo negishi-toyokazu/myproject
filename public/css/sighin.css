@@ -1,129 +1,91 @@
-.login-item {
-  position: relative;
-  width: 300px;
-  margin: 80px auto;
-  padding: 20px 40px 40px;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #ccc;
+.login {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+  border-radius: 9px;
+  border: 1px solid #DCDCDC;
+  box-shadow: 0 3px 6px #DCDCDC;
 }
 
-#output {
-  position: absolute;
-  width: 300px;
-  top: -75px;
-  left: 0;
+/* Reset top and bottom margins from certain elements */
+
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* The triangle form is achieved by a CSS hack */
+
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+  border-bottom-color: #28d;
+}
+
+.login-header {
+  background: #3C4174;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
   color: #fff;
 }
 
-#output.alert-success {
-  background: #19cc19;
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
 }
 
-#output.alert-danger {
-  background: #e46969;
+/* Every row inside .login-container is defined with p tags */
+
+.login p {
+  padding: 12px;
 }
 
-.login-item::before,
-.login-item::after {
-  content: "";
-  position: absolute;
+.login input {
+  box-sizing: border-box;
+  display: block;
   width: 100%;
-  height: 100%;
-  top: 3.5px;
-  left: 0;
-  background: #fff;
-  z-index: -1;
-  -webkit-transform: rotateZ(4deg);
-  -moz-transform: rotateZ(4deg);
-  -ms-transform: rotateZ(4deg);
-  border: 1px solid #ccc;
-}
-
-.login-item::after {
-  top: 5px;
-  z-index: -2;
-  -webkit-transform: rotateZ(-2deg);
-  -moz-transform: rotateZ(-2deg);
-  -ms-transform: rotateZ(-2deg);
-}
-
-.avatar {
-  width: 100px;
-  height: 100px;
-  margin: 10px auto 30px;
-  border-radius: 100%;
-  border: 2px solid #aaa;
-  background-size: cover;
-}
-
-.form-box input {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  height: 40px;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  transition: 0.2s ease-in-out;
-}
-
-.form-box input:focus {
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
   outline: 0;
-  background: #eee;
+  font-family: inherit;
+  font-size: 0.95em;
 }
 
-.form-box input[type=text] {
-  border-radius: 5px 5px 0 0;
-  text-transform: lowercase;
+.login input[type=email],
+.login input[type=password] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
 }
 
-.form-box input[type=password] {
-  border-radius: 0 0 5px 5px;
-  border-top: 0;
+/* Text fields' focus effect */
+
+.login input[type=email]:focus,
+.login input[type=password]:focus {
+  border-color: #888;
 }
 
-.form-box button.login {
-  margin-top: 15px;
-  padding: 10px 20px;
+.login input[type=submit] {
+  background: #3C4174;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
 }
 
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.login input[type=submit]:hover {
+  background: #17c;
 }
 
-@-webkit-keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(20px);
-    transform: translateY(20px);
-  }
+/* Buttons' focus effect */
 
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(20px);
-    transform: translateY(20px);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-.fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
+.login input[type=submit]:focus {
+  border-color: #05a;
 }
 

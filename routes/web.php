@@ -23,7 +23,7 @@ Route::post('/', 'QuestionController@submitQuestion');
 Route::get('/list', 'QuestionController@list')->name('list');
 //質問内容
 Route::get('/content/{id}', 'QuestionController@content')->name('content');
-Route::post('/content', 'QuestionController@answer');
+Route::post('/content', 'QuestionController@answer')->name('answer');
 //マイページ
 Route::get('/mypage', 'QuestionController@mypage')->name('mypage');
 //質問詳細(投稿者)

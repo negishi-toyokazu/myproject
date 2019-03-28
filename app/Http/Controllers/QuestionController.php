@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Question;
 use App\Category;
+use App\Answer;
 
 
 class QuestionController extends Controller
@@ -43,14 +44,19 @@ class QuestionController extends Controller
     public function content(Request $request, $id)
     {
         $question = Question::find($id);
-        //$question_id= Question::find($request->id);
-        //$question_content = Question::where('id', '$question_id')->get();
-        return view('question.content', compact('question'));
+
+        return view('question.content', compact('question','id'));
 
     }
 
-    public function answer()
+    public function answer(Request $request)
     {
+        $this->validate($request, Answer::$rules);
+        $answer = new Answer;
+        $form = $request->all();
+        $answer->fill($form);
+        $answer->save();
+
         return redirect('question/content');
     }
 

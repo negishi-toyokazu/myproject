@@ -10,3 +10,17 @@ ul {
   color: #DB3D36;
 }
 
+.card {
+  border-radius: 9px;
+  border: 1px solid #DCDCDC;
+  box-shadow: 0 3px 6px #DCDCDC;
+  background-color: #FFFFFF;
+}
+
+.category-card {
+  border-radius: 9px;
+  border: 1px solid #DCDCDC;
+  box-shadow: 0 3px 6px #DCDCDC;
+  background-color: #FFFFFF;
+}
+

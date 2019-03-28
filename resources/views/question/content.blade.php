@@ -27,7 +27,7 @@
 
       <div class="card bg-light p-3">
 
-          <form action="#" method="post" enctype="multipart/form-data">
+          <form action="{{route ('answer')}}" method="post" enctype="multipart/form-data">
             @csrf
             @if (count($errors) > 0)
                 <ul>
@@ -39,7 +39,7 @@
 
             <div class="question-content mx-3 mb-3 ">
 
-              <textarea type="text" class="form-control"  rows="5"　placeholder="回答内容" name="question" required></textarea>
+          <textarea type="text" class="form-control" rows="5" name="answer" placeholder="回答内容" required></textarea>
               </div>
               <div class="botton-content float-right">
 

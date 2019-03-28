@@ -17,7 +17,7 @@
               @foreach($questions as $recode)
                 <tr>
                   <th>
-                    <a class="text-info" href="{{ route('content') }}">
+                    <a class="text-info" href="{{ route('content', [$recode->id]) }}">
                      {{$recode->question}}
                     </a>
                   </th>

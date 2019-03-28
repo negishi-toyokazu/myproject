@@ -26,16 +26,17 @@
               <h4>ユーザー名</h4>
               <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名"  required>
             </div>
-            <div class="question-content mx-3 mb-3 ">
+            <div class="question-content mx-3 mb-3">
               <h4>質問内容</h4>
-              <textarea type="text" class="form-control"  rows="5"　name="question"　placeholder="内容"　required></textarea>
+              <textarea type="text" class="form-control" rows="5" name="question" placeholder="質問内容" required></textarea>
               </div>
               <div class="botton-content float-right">
 
                 <button type="submit" class="btn btn-success">質問する</button>
                 </div>
-              </div>
+
           </form>
+          </div>
         </div>
       </div>
 {{--カテゴリ--}}

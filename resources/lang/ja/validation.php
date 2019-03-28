@@ -103,7 +103,8 @@ return [
       'email' => 'メールアドレス',
       'password' => 'パスワード',
       'question' => '質問',
-      'user_name' => 'ユーザー名'
+      'user_name' => 'ユーザー名',
+      'answer' => '回答',
     ],
 
 ];

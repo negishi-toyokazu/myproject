@@ -8,17 +8,16 @@
     <link href="{{ asset('css/sighin.css') }}" rel="stylesheet">
     <script src="{{ asset('sighin/app.js') }}" defer></script>
 
+    <div class="login">
+      <div class="login-triangle"></div>
 
-    	<div class="login-item">
-        <h3>ログイン画面</h3>
-                <div id="output"></div>
-                <div class="avatar"></div>
-                <div class="form-box">
-                    <form action="" method="">
-                        <input name="user" type="text" placeholder="ユーザー名">
-                        <input type="password" placeholder="パスワード">
-                        <button class="btn btn-info btn-block login" type="submit">ログイン</button>
-                    </form>
-                </div>
-            </div>
+      <h2 class="login-header">ログイン画面</h2>
+
+      <form class="login-container">
+        <p><input type="email" placeholder="メールアドレス"></p>
+        <p><input type="password" placeholder="パスワード"></p>
+        <p><input type="submit" value="ログイン"></p>
+      </form>
+    </div>
+
 @endsection

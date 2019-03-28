@@ -2,13 +2,13 @@
 @section('title', '農家に聞こう')
 @section('content')
 
-
+<link href="{{ asset('css/mypage.css') }}" rel="stylesheet">
 
   <h2 class="my-3">マイページ</h2>
 
       {{--質問--}}
 
-        <div class="question-table mb-5 p-3 bg-light">
+        <div class="question-table mb-5 p-3">
           <h4 class="my-3">投稿した質問一覧</h4>
           <div class="table-responsive">
           <table class="table table-hover table-bordered">
@@ -37,7 +37,7 @@
         </div>
         {{--回答--}}
 
-            <div class="answer-table p-3 bg-light">
+            <div class="answer-table p-3">
               <h4 class="my-3">回答した質問一覧</h4>
               <div class="table-responsive">
               <table class="table table-hover table-bordered">
