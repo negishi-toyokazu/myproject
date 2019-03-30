@@ -27,7 +27,7 @@
 
       <div class="card bg-light p-3">
 
-          <form action="{{route ('answer')}}" method="post" enctype="multipart/form-data">
+          <form action="{{ action('QuestionController@answer',[$question->id])}}" method="post" enctype="multipart/form-data">
             @csrf
             @if (count($errors) > 0)
                 <ul>

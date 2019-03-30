@@ -23,15 +23,15 @@ Route::post('/', 'QuestionController@submitQuestion');
 Route::get('/list', 'QuestionController@list')->name('list');
 //質問内容
 Route::get('/content/{id}', 'QuestionController@content')->name('content');
-Route::post('/content', 'QuestionController@answer')->name('answer');
+Route::post('/content/{id}', 'QuestionController@answer');
 //マイページ
 Route::get('/mypage', 'QuestionController@mypage')->name('mypage');
 //質問詳細(投稿者)
-Route::get('/detail', 'QuestionController@detail')->name('detail');
+Route::get('/detail/{id}', 'QuestionController@detail')->name('detail');
 Route::post('/detail', 'QuestionController@status');
 //新規登録
 Route::get('/register', 'Auth\RegisterController@getRegister')->name('touroku');
-Route::post('/register', 'Auth\RegisterController@create');
+Route::post('/register', 'Auth\RegisterController@create')->name('register.post');
 
 //新規登録完了
 Route::get('/register/conp', 'QuestionController@conpRegister');

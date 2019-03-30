@@ -27,7 +27,7 @@
                   <th class="font-weight-light">{{$record->created_at}}</th>
                   <td>未解決</td>
                   <td>{{$record->question}}</td>
-                  <td><a class="btn btn-success" href="{{ route('detail')}}" role="button">詳細</a></td>
+                  <td><a class="btn btn-success" href="{{ route('detail', [$record->id]) }}" role="button">詳細</a></td>
                   <td>0件</td>
                 </tr>
               @endforeach

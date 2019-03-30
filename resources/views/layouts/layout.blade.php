@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/question.css') }}" rel="stylesheet">
     {{--font--}}
-    
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" type="text/css">
 
 
@@ -45,8 +45,8 @@
             </ul>
         </div>
         <form class="form-inline">
-            <button class="btn btn-info" type="submit" formaction="{{ route('touroku')}}"><i class="fas fa-registered"></i> 新規登録</button>
-            <button class="btn btn-info" type="submit" formaction="{{ route('setuzoku')}}"><i class="fas fa-key"></i> ログイン</button>
+            <button class="btn btn-success mx-2" type="submit" formaction="{{ route('touroku')}}"><i class="fas fa-registered"></i> 新規登録</button>
+            <button class="btn btn-primary mx-2" type="submit" formaction="{{ route('setuzoku')}}"><i class="fas fa-key"></i> ログイン</button>
         </form>
     </nav>
               {{-- ここまでナビゲーションバー --}}

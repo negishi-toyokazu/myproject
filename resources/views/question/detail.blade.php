@@ -12,7 +12,7 @@
               <h5 class="card-title">質問内容</h5>
             </div>
             <div class="card-body">
-              <p class="card-text"></p>
+              <p class="card-text">{{$question->question}}</p>
             </div>
       　　</div>
         </div>

@@ -24,3 +24,18 @@ ul {
   background-color: #FFFFFF;
 }
 
+ul.list-group {
+  display: table;
+  width: 100%;
+}
+
+ul.list-group > li:nth-child(3n+1) {
+  clear: both;
+}
+
+ul.list-group > li {
+  display: table-cell;
+  float: left;
+  width: 33%;
+}
+

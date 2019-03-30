@@ -1,4 +1,6 @@
-body{background: #eee url(http://subtlepatterns.com/patterns/leaves.png);}
+body{
+  background: #eee url(http://subtlepatterns.com/patterns/leaves.png);
+  }
 
 // Font
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;subset=japanese');
@@ -16,15 +18,9 @@ body{background: #eee url(http://subtlepatterns.com/patterns/leaves.png);}
 
 .nav-link {
   color: white !important;
+  font-size: 120%;
 }
 
-.form-inline {
-
-}
-
-.btn {
-  margin: 0 10px 0 10px;
-}
 
 .container {
   h1{

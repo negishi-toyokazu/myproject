@@ -49,15 +49,17 @@ class QuestionController extends Controller
 
     }
 
-    public function answer(Request $request)
+    public function answer(Request $request, $id)
     {
-        $this->validate($request, Answer::$rules);
-        $answer = new Answer;
-        $form = $request->all();
-        $answer->fill($form);
-        $answer->save();
+      $this->validate($request, Answer::$rules);
+      $answer = new Answer;
+      $answer->question_id = $id;
+      $form = $request->all();
+      $answer->fill($form);
+      $answer->save();
 
-        return redirect('question/content');
+
+      return redirect('question/list');
     }
 
     //mypage
@@ -68,9 +70,11 @@ class QuestionController extends Controller
     }
 
     //質問詳細(投稿者向け)
-    public function detail()
+    public function detail(Request $request, $id)
     {
-        return view('question.detail');
+        $question = Question::find($id);
+
+        return view('question.detail', compact('question', 'id'));
     }
     public function status()
     {
