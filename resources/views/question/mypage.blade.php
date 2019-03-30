@@ -44,13 +44,17 @@
                 <thead class="thead-light">
                   <tr>
                     <th>日時</th>
+                    <th>ユーザー名</th>
                     <th>質問内容</th>
+                    <th>回答</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($answers as $answer)
                   <tr>
-                    <th class="font-weight-light">{{$answer->created_at}}</th>
+                    <td class="font-weight-light">{{$answer->created_at}}</td>
+                    <td>{{$answer->question->user_name}}</td>
+                    <td>{{$answer->question->question}}</td>
                     <td>{{$answer->answer}}</td>
                   </tr>
                   @endforeach

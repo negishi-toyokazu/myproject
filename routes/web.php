@@ -25,7 +25,7 @@ Route::get('/list', 'QuestionController@list')->name('list');
 Route::get('/content/{id}', 'QuestionController@content')->name('content');
 Route::post('/content/{id}', 'QuestionController@answer');
 //マイページ
-Route::get('/mypage', 'QuestionController@mypage')->name('mypage');
+Route::get('/mypage', 'QuestionController@mypage')->middleware('auth')->name('mypage');
 //質問詳細(投稿者)
 Route::get('/detail/{id}', 'QuestionController@detail')->name('detail');
 Route::post('/detail', 'QuestionController@status');
@@ -36,7 +36,7 @@ Route::post('/register', 'Auth\RegisterController@create')->name('register.post'
 //新規登録完了
 Route::get('/register/conp', 'QuestionController@conpRegister');
 //ログイン
-Route::get('/sighin', 'QuestionController@getSignin')->name('setuzoku');
+Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');
 Route::post('/signin', 'QuestionController@postSignin');
 });
 

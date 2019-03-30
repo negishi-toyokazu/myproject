@@ -16,15 +16,17 @@ class QuestionController extends Controller
     {
       $yasais = Category::where('class', '野菜')->get();
       $fruits = Category::where('class', '果物')->get();
+      $categories = Category::all();
 
-        //$categories = Category::all();
-        return view('question.index', compact('yasais', 'fruits'));
+        return view('question.index', compact('yasais', 'fruits', 'categories'));
     }
 
     public function submitQuestion(Request $request)
     {
       $this->validate($request, Question::$rules);
       $question = new Question;
+      $category = new Category;
+      $question->category_id = $category->id;
       $form = $request->all();
       $question->fill($form);
       $question->save();

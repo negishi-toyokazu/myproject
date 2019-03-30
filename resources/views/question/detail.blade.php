@@ -15,7 +15,8 @@
               <p class="card-text">{{$question->question}}</p>
             </div>
       　　</div>
-        </div>
+    </div>
+
     <div class="item">
       <h2>回答一覧</h2>
         <div class="answer-card bg-light mb-3">
@@ -28,6 +29,9 @@
               @endforeach
             </div>
     　　</div>
+      <a class="btn btn-warning" href="#" role="button">解決済み</a>
     </div>
+  </div>
+
 
 @endsection

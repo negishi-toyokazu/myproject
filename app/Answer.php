@@ -21,7 +21,7 @@ class Answer extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function questions()
+    public function question()
     {
         return $this->belongsTo('App\Question');
     }

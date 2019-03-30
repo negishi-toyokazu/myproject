@@ -44,11 +44,38 @@
                 </li>
             </ul>
         </div>
-        <form class="form-inline">
-            <button class="btn btn-success mx-2" type="submit" formaction="{{ route('touroku')}}"><i class="fas fa-registered"></i> 新規登録</button>
-            <button class="btn btn-primary mx-2" type="submit" formaction="{{ route('setuzoku')}}"><i class="fas fa-key"></i> ログイン</button>
-        </form>
-    </nav>
+        @guest
+            <div class="top-right links form-inline">
+                    <a href="{{ route('setuzoku') }}" class="btn btn-primary mx-2"><i class="fas fa-key"></i> ログイン</a>
+        @if (Route::has('register'))
+                        <a href="{{ route('touroku') }}" class="btn btn-success"><i class="fas fa-registered"></i> 新規登録</a>
+        @endif
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('ログアウト') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
+      </nav>
+
+
+
+
+
+
               {{-- ここまでナビゲーションバー --}}
               <div class="container">
               <main class="py-4">

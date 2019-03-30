@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-  public function questions()
+  public function question()
   {
       return $this->hasMany('App\Question');
   }
 
-  public function answers()
+  public function answer()
   {
       return $this->hasMany('App\Answer');
   }
