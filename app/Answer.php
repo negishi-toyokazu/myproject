@@ -23,6 +23,6 @@ class Answer extends Model
 
     public function questions()
     {
-        return $this->hasMany('App\Question');
+        return $this->belongsTo('App\Question');
     }
 }

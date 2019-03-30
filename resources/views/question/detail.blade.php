@@ -23,7 +23,9 @@
               <h5 class="card-title">回答内容</h5>
             </div>
             <div class="card-body">
-              <p class="card-text"></p>
+              @foreach($answers as $answer)
+              <p class="card-text">{{$answer->answer}}</p>
+              @endforeach
             </div>
     　　</div>
     </div>

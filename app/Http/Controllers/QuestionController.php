@@ -66,15 +66,18 @@ class QuestionController extends Controller
     public function mypage()
     {
         $questions = Question::all();
-        return view('question.mypage', compact('questions'));
+        $answers =Answer::all();
+
+        return view('question.mypage', compact('questions','answers'));
     }
 
     //質問詳細(投稿者向け)
     public function detail(Request $request, $id)
     {
         $question = Question::find($id);
+        $answers = Answer::where('question_id',$id)->get();
 
-        return view('question.detail', compact('question', 'id'));
+        return view('question.detail', compact('question', 'id','answers'));
     }
     public function status()
     {

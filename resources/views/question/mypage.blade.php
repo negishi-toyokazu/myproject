@@ -48,10 +48,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($answers as $answer)
                   <tr>
-                    <th class="font-weight-light"></th>
-                    <td></td>
+                    <th class="font-weight-light">{{$answer->created_at}}</th>
+                    <td>{{$answer->answer}}</td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
               </div>
