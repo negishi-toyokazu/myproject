@@ -23,7 +23,11 @@
         @endif
       <div class="user-content my-3 col-md-6">
         <h5>ユーザー名</h5>
-        <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名"  required>
+        @if (Auth::check())
+          <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
+        @else
+          <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
+        @endif
       </div>
       <div class="category-content　my-3 col-md-6">
         <h5>カテゴリ</h5>
