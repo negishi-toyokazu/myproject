@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//追加
+use Illuminate\Http\Request;
+use App\Http\Controllers\QuestionController;
 
 class LoginController extends Controller
 {
@@ -18,15 +21,22 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers{
+    logout as performLogout;
+    }
 
+    public function logout(Request $request)
+    {
+      $this->performLogout($request);
+      return redirect('question'); // ここを好きな遷移先に変更する。
+    }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
      //redirect 追加
-    protected $redirectTo = 'question/mypage';
+    protected $redirectTo = 'question';
 
     /**
      * Create a new controller instance.

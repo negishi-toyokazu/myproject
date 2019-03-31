@@ -86,38 +86,9 @@ class QuestionController extends Controller
         return redirect('question/detail');
     }
 
-    //新規登録
-    public function getRegister()
-    {
-        return view('question.register');
-    }
-    public function postRegister(Request $request)
-    {
-        $this->validate($request, User::$rules);
-        $register = new User;
-        $form = $request->all();
-        $register->fill($form);
-        $register->save();
-
-        return redirect('question/register/conp');
-    }
-
     //新規登録完了画面
     public function conpRegister()
     {
         return view('question.register_conp');
-    }
-
-    //ログイン
-    public function getSignin()
-    {
-        return view('question.sighin');
-    }
-
-    public function postSignin(Request $request)
-    {
-        $this->validate($request, User::$rules);
-
-        return direct('question');
     }
 }
