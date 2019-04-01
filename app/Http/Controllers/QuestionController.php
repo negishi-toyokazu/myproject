@@ -26,8 +26,8 @@ class QuestionController extends Controller
         $this->validate($request, Question::$rules);
         $question = new Question;
         $category = new Category;
-        $question->category_id = $category->id;
         $question->user_id = Auth::id();
+        $question->category_id = $request->input('category_id');
         $form = $request->all();
         $question->fill($form);
         $question->save();

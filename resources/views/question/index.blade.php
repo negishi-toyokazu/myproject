@@ -31,10 +31,10 @@
       </div>
       <div class="category-content　my-3 col-md-6">
         <h5>カテゴリ</h5>
-        <select name="category">
+        <select name="category_id">
           <option selected>選択してください</option>
           @foreach($categories as $category)
-          <option value="category" name="category">{{$category->category}}</option>
+          <option value="{{$category->id}}" name="category_id">{{$category->category}}</option>
           @endforeach
         </select>
 
