@@ -40,26 +40,28 @@
             <div class="answer-table p-3">
               <h4 class="my-3">回答した質問一覧</h4>
               <div class="table-responsive">
-              <table class="table table-hover table-bordered">
-                <thead class="thead-light">
-                  <tr>
-                    <th>日時</th>
-                    <th>ユーザー名</th>
-                    <th>質問内容</th>
-                    <th>回答</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($answers as $answer)
-                  <tr>
-                    <td class="font-weight-light">{{$answer->created_at}}</td>
-                    <td>{{$answer->question->user_name}}</td>
-                    <td>{{$answer->question->question}}</td>
-                    <td>{{$answer->answer}}</td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                <table class="table table-hover table-bordered">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>日時</th>
+                      <th>質問内容</th>
+                      <th>回答</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($answers as $answer)
+                    <tr>
+                      <td class="font-weight-light">{{$answer->created_at}}</td>
+                      @if ($answer->question)
+                        <td>{{$answer->question->question}}</td>
+                      @else
+                        <td></td>
+                      @endif
+                      <td>{{$answer->answer}}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
               </div>
             </div>
 
