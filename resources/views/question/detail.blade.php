@@ -29,7 +29,11 @@
               @endforeach
             </div>
     　　</div>
-      <a class="btn btn-warning" href="#" role="button">解決済み</a>
+
+      <form action="{{ route('kaiketu', [$question->id]) }}" method="POST" class="form-horizontal">
+        @csrf
+        <button type="submit" name="kaiketu" class="btn btn-success">解決</button>
+      </form>
     </div>
   </div>
 

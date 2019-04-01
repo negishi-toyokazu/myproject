@@ -2,7 +2,6 @@
 @section('title', '農家に聞こう')
 @section('content')
 
-
   <h2 class="my-3">質問一覧</h2>
     <div class="col">
       {{--質問一覧テーブル--}}
@@ -26,5 +25,5 @@
             </tbody>
           </table>
         </div>
-      </div>
+    </div>
 @endsection

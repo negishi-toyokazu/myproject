@@ -49173,6 +49173,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/content.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/content.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/detail.scss":
 /*!************************************!*\
   !*** ./resources/sass/detail.scss ***!
@@ -49240,9 +49251,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/question.scss ./resources/sass/sighin.scss ./resources/sass/register.scss ./resources/sass/top.scss ./resources/sass/detail.scss ./resources/sass/mypage.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/question.scss ./resources/sass/sighin.scss ./resources/sass/register.scss ./resources/sass/top.scss ./resources/sass/detail.scss ./resources/sass/mypage.scss ./resources/sass/content.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49253,7 +49264,8 @@ __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sa
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/register.scss */"./resources/sass/register.scss");
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/top.scss */"./resources/sass/top.scss");
 __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/detail.scss */"./resources/sass/detail.scss");
-module.exports = __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/mypage.scss */"./resources/sass/mypage.scss");
+__webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/mypage.scss */"./resources/sass/mypage.scss");
+module.exports = __webpack_require__(/*! /Users/negitoyo/Desktop/techboost/myproject/resources/sass/content.scss */"./resources/sass/content.scss");
 
 
 /***/ })
