@@ -9,7 +9,7 @@
     <img src="{{ asset('image/logo1.png') }}" class="mx-auto d-block" width="480" height="151">
   </a>
 </div>
-{{--質問投稿フォーム--}}
+<!--質問投稿フォーム-->
 <div class="col-md-8">
   <div class="card bg-light p-3 my-5">
     <form action="{{ action('QuestionController@submitQuestion')}}" method="post" enctype="multipart/form-data">
@@ -37,7 +37,10 @@
               <option value="{{$category->id}}" name="category_id">{{$category->category}}</option>
             @endforeach
         </select>
-
+      </div>
+      <div class="image-content my-3 col-md-6">
+        <h5>画像</h5>
+        <input type="file" name="image" class="form-control-file">
       </div>
       <div class="question-content my-3 mx-3">
         <h5>質問内容</h5>
@@ -49,7 +52,7 @@
     </form>
   </div>
 </div>
-{{--カテゴリ--}}
+<!--カテゴリ-->
   <h3>カテゴリ</h3>
     <div class="row">
       <div class="col-md-6">

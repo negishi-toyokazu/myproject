@@ -28,8 +28,20 @@ class QuestionController extends Controller
         $category = new Category;
         $question->category_id = $request->input('category_id');
         $question->user_id = Auth::id();
-        $question->status = "未解決";
+
         $form = $request->all();
+        if (isset($form['image'])) {
+        $path = $request->file('image')->store('public/image');
+        $question->image_path = basename($path);
+      } else {
+          $news->image_path = null;
+      }
+      // フォームから送信されてきた_tokenを削除する
+      unset($form['_token']);
+      // フォームから送信されてきたimageを削除する
+      unset($form['image']);
+
+        $question->status = "未解決";
         $question->fill($form);
         $question->save();
 
@@ -39,9 +51,9 @@ class QuestionController extends Controller
     //質問一覧
     public function list()
     {
-      $yasais = Category::where('class', '野菜')->get();
-      $fruits = Category::where('class', '果物')->get();
-      return view('question.list', compact('yasais', 'fruits'));
+        $yasais = Category::where('class', '野菜')->get();
+        $fruits = Category::where('class', '果物')->get();
+        return view('question.list', compact('yasais', 'fruits'));
     }
 
     //質問分類
@@ -51,7 +63,7 @@ class QuestionController extends Controller
         $questions = Question::where('category_id', $id)->get();
 
 
-        return view('question.list_class', compact('category','questions','id'));
+        return view('question.list_class', compact('category', 'questions', 'id'));
     }
 
     //質問内容
@@ -81,15 +93,9 @@ class QuestionController extends Controller
     //mypage
     public function mypage()
     {
-      $user_id = Auth::id();
-      //$questions = Question::all();
-      $questions = Question::where('user_id', $user_id)->get();
-        //$answers = Answer::all();
+        $user_id = Auth::id();
+        $questions = Question::where('user_id', $user_id)->get();
         $answers = Answer::where('user_id', $user_id)->get();
-
-        /*$answers_count = Answer::all(['question_id'])
-                      ->groupBy('question_id')
-                      ->count('question_id');*/
 
         return view('question.mypage', compact('questions', 'answers'));
     }
@@ -118,12 +124,12 @@ class QuestionController extends Controller
     //質問投稿画面
     public function contri()
     {
-       return view('question.question_conp');
+        return view('question.question_conp');
     }
 
     //回答完了画面
     public function conpAnswer()
     {
-      return view('question.answer_conp');
+        return view('question.answer_conp');
     }
 }

@@ -10,7 +10,7 @@
     {{--　質問内容 --}}
           <div class="question-content m-3">
             <h5><b>{{$question->category->category}}</b> に関しての質問です</h5>　
-
+            
             <p><i class="fab fa-quora question-icon"></i> 質問内容</p>
              <div class="card bg-light mb-3 mt-3">
                <div class="content">
@@ -29,28 +29,27 @@
 
             <div class="card bg-light p-3">
               <form action="{{ action('QuestionController@answer',[$question->id])}}" method="post" enctype="multipart/form-data">
-              @csrf
-                @if (count($errors) > 0)
-                  <ul>
-                      @foreach($errors->all() as $e)
-                          <li>{{ $e }}</li>
-                      @endforeach
-                  </ul>
-                @endif
+                @csrf
+                  @if (count($errors) > 0)
+                    <ul>
+                        @foreach($errors->all() as $e)
+                            <li>{{ $e }}</li>
+                        @endforeach
+                    </ul>
+                  @endif
 
                 <div class="question-item mx-3 mb-3 ">
                   <div class="user-content my-3 col-md-6">
-                  <h5>ユーザー名</h5>
-                  @if (Auth::check())
-                    <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
-                  @else
-                    <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
-                  @endif
-                </div>
-                <div class="category-content my-3 col-md-6">
-                
-                  <input type="hidden" name="category_id" value="{{$question->category->id}}">
-                </div>
+                    <h5>ユーザー名</h5>
+                      @if (Auth::check())
+                        <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
+                      @else
+                        <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
+                      @endif
+                  </div>
+                  <div class="category-content my-3 col-md-6">
+                    <input type="hidden" name="category_id" value="{{$question->category->id}}">
+                  </div>
                   <textarea type="text" class="form-control" rows="5" name="answer" placeholder="回答内容" required></textarea>
                 </div>
 
@@ -71,15 +70,21 @@
           </div>
         </div>
       </div>
-
+      {{--　回答一覧--}}
       <div class="col-md-5">
         <h4>回答一覧</h4>
-        <div class="answer-list bg-light mb-3 mt-3">
-          @foreach($answers as $answer)
-          <p class="card-text">{{$answer->answer}}</p>
-          @endforeach
-        </div>
+          <div class="answer-list bg-light mb-3 mt-3">
+            @foreach($answers as $answer)
+              <p class="card-text">{{$answer->answer}}</p>
+            @endforeach
+          </div>
       </div>
-    </div>
 
+      <div class="image">
+        @if ($question->image_path)
+            <img src="{{ asset('storage/image/' . $question->image_path) }}" width="100px" height="100px">
+       @endif
+      </div>
+
+    </div>
 @endsection
