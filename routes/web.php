@@ -19,8 +19,10 @@ Route::group(['prefix' => 'question'], function () {
     //toppage
     Route::get('/', 'QuestionController@add')->name('top');
     Route::post('/', 'QuestionController@submitQuestion');
+    //質問投稿完了画面
+    Route::get('/contri', 'QuestionController@contri');
     //質問一覧
-    Route::get('/list', 'QuestionController@list')->name('list');
+    Route::get('/list/{id}', 'QuestionController@list')->name('list');
     //質問内容
     Route::get('/content/{id}', 'QuestionController@content')->name('content');
     Route::post('/content/{id}', 'QuestionController@answer');
@@ -35,6 +37,7 @@ Route::group(['prefix' => 'question'], function () {
 
     //新規登録完了
     Route::get('/register/conp', 'QuestionController@conpRegister');
+
     //ログイン
     Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');
     Route::post('/signin', 'QuestionController@postSignin');

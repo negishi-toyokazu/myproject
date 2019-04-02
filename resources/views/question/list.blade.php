@@ -7,22 +7,25 @@
       {{--質問一覧テーブル--}}
         <div class="question-table mb-5 bg-light">
           <table class="table">
+
             <thead class="thead-light">
-              <tr class="font-weight-bold">
-                <th>質問内容</th>
-              </tr>
+
+                <tr><th>{{$category->category}}</th></tr>
             </thead>
             <tbody>
               @foreach($questions as $recode)
                 <tr>
                   <th>
-                    <a class="text-info" href="{{ route('content', [$recode->id]) }}">
+
+                    <a class="text-info" href="">
+                    
                      {{$recode->question}}
                     </a>
                   </th>
                 </tr>
-              @endforeach
+                @endforeach
             </tbody>
+
           </table>
         </div>
     </div>

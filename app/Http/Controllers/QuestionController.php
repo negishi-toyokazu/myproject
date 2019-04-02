@@ -26,21 +26,26 @@ class QuestionController extends Controller
         $this->validate($request, Question::$rules);
         $question = new Question;
         $category = new Category;
-        //$question->category_id = Category::where('id')->get();
+        $question->category_id = $request->input('category_id');
         $question->user_id = Auth::id();
         $question->status = "未解決";
         $form = $request->all();
         $question->fill($form);
         $question->save();
 
-        return redirect('question');
+        return redirect('question/view');
     }
 
     //質問一覧
-    public function list()
+    public function list(Request $request, $id)
     {
-        $questions = Question::all();
-        return view('question.list', compact('questions'));
+        //$categories = Category::all();
+        $category = Category::find($id);
+        //$question_id = Question::all();
+        $questions = Question::where('category_id', $id)->get();
+
+
+        return view('question.list', compact('category','questions','id'));
     }
 
     //質問内容
@@ -49,7 +54,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $answers = Answer::where('question_id', $id)->get();
 
-        return view('question.content', compact('question', 'id', 'answers'));
+        return view('question.content', compact('question', 'id', 'answers','category'));
     }
 
     public function answer(Request $request, $id)
@@ -96,5 +101,11 @@ class QuestionController extends Controller
     public function conpRegister()
     {
         return view('question.register_conp');
+    }
+
+    //質問投稿画面
+    public function contri()
+    {
+       return view('question.question_conp');
     }
 }

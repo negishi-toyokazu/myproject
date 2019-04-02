@@ -56,8 +56,16 @@
                     <tr>
                       <td class="font-weight-light">{{$answer->created_at}}</td>
                       <td>{{$answer->question->user_name}}</td>
+                      @if ($answer->question)
                       <td>{{$answer->question->question}}</td>
+                      @else
+                      <td></td>
+                      @endif
+                      @if ($answer->answer)
                       <td>{{$answer->answer}}</td>
+                      @else
+                      <td></td>
+                      @endif
                     </tr>
                     @endforeach
                   </tbody>
