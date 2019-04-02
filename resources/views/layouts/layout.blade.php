@@ -21,68 +21,60 @@
     <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">
 
     <title>@yield('title')</title>
-
-
   </head>
 
   <body>
-
     <div id="app">
       {{-- ナビゲーションバー --}}
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-3 mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
         <a class="navbar-brand" href="{{ route('top')}}"><i class="fas fa-home fa-lg"></i></a>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('list')}}">質問一覧</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
+            </li>
+            <li class="nav-item">
+
+              <a class="nav-link" href="{{ route('list')}}">質問一覧</a>
+
+            </li>
+          </ul>
         </div>
         @guest
-            <div class="top-right links form-inline">
-                    <a href="{{ route('setuzoku') }}" class="btn btn-primary mx-2"><i class="fas fa-key"></i> ログイン</a>
+        <div class="top-right links form-inline">
+          <a href="{{ route('setuzoku') }}" class="btn btn-primary mx-2"><i class="fas fa-key"></i> ログイン</a>
         @if (Route::has('register'))
-                        <a href="{{ route('touroku') }}" class="btn btn-success"><i class="fas fa-registered"></i> 新規登録</a>
+          <a href="{{ route('touroku') }}" class="btn btn-success"><i class="fas fa-registered"></i> 新規登録</a>
         @endif
         @else
-            <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('ログアウト') }}
-                    </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                {{ __('ログアウト') }}
+              </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            </div>
+          </li>
         @endguest
-      </nav>
-
-
-
-
-
-
-              {{-- ここまでナビゲーションバー --}}
-              <div class="container">
+    </nav>
+{{-- ここまでナビゲーションバー --}}
+            <div class="container">
               <main class="py-4">
                   {{-- コンテンツをここに入れる --}}
                   @yield('content')
               </main>
-              </div>
-          </div>
-      </body>
-  </html>
+            </div>
+        </div>
+
+  </body>
+</html>

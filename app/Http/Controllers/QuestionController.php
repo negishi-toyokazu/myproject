@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,6 +6,7 @@ use App\User;
 use App\Question;
 use App\Category;
 use App\Answer;
+//追加
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -26,51 +26,72 @@ class QuestionController extends Controller
         $this->validate($request, Question::$rules);
         $question = new Question;
         $category = new Category;
-        $question->user_id = Auth::id();
         $question->category_id = $request->input('category_id');
+        $question->user_id = Auth::id();
+        $question->status = "未解決";
         $form = $request->all();
         $question->fill($form);
         $question->save();
 
-        return redirect('question');
+        return redirect('question/contri');
     }
 
     //質問一覧
     public function list()
     {
-        $questions = Question::all();
-        return view('question.list', compact('questions'));
+      $yasais = Category::where('class', '野菜')->get();
+      $fruits = Category::where('class', '果物')->get();
+      return view('question.list', compact('yasais', 'fruits'));
     }
 
+    //質問分類
+    public function listClass(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $questions = Question::where('category_id', $id)->get();
+
+
+        return view('question.list_class', compact('category','questions','id'));
+    }
 
     //質問内容
     public function content(Request $request, $id)
     {
         $question = Question::find($id);
+        $answers = Answer::where('question_id', $id)->get();
 
-        return view('question.content', compact('question', 'id'));
+        return view('question.content', compact('question', 'id', 'answers'));
     }
 
     public function answer(Request $request, $id)
     {
         $this->validate($request, Answer::$rules);
         $answer = new Answer;
+        $category = new Category;
         $answer->question_id = $id;
+        $answer->user_id = Auth::id();
+        $answer->category_id = $request->input('category_id');
         $form = $request->all();
         $answer->fill($form);
         $answer->save();
 
-
-        return redirect('question/list');
+        return redirect('question/answer');
     }
 
     //mypage
     public function mypage()
     {
-        $questions = Question::all();
-        $answers =Answer::all();
+      $user_id = Auth::id();
+      //$questions = Question::all();
+      $questions = Question::where('user_id', $user_id)->get();
+        //$answers = Answer::all();
+        $answers = Answer::where('user_id', $user_id)->get();
 
-        return view('question.mypage', compact('questions', 'answers'));
+        $answers_count = Answer::all(['question_id'])
+                      ->groupBy('question_id')
+                      ->count('question_id');
+
+        return view('question.mypage', compact('questions', 'answers', 'answers_count'));
     }
 
     //質問詳細(投稿者向け)
@@ -81,14 +102,28 @@ class QuestionController extends Controller
 
         return view('question.detail', compact('question', 'id', 'answers'));
     }
-    public function status()
+
+    public function status(Request $request, $id)
     {
-        return redirect('question/detail');
+        Question::where('id', $id)->update(['status' => '解決済']);
+        return redirect('question/mypage');
     }
 
     //新規登録完了画面
     public function conpRegister()
     {
         return view('question.register_conp');
+    }
+
+    //質問投稿画面
+    public function contri()
+    {
+       return view('question.question_conp');
+    }
+
+    //回答完了画面
+    public function conpAnswer()
+    {
+      return view('question.answer_conp');
     }
 }

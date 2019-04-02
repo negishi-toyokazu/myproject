@@ -33,15 +33,15 @@
         <h5>カテゴリ</h5>
         <select name="category_id">
           <option selected>選択してください</option>
-          @foreach($categories as $category)
-          <option value="{{$category->id}}" name="category_id">{{$category->category}}</option>
-          @endforeach
+            @foreach($categories as $category)
+              <option value="{{$category->id}}" name="category_id">{{$category->category}}</option>
+            @endforeach
         </select>
 
       </div>
       <div class="question-content my-3 mx-3">
         <h5>質問内容</h5>
-        <textarea type="text" class="form-control" rows="5" name="question" placeholder="質問内容" required></textarea>
+          <textarea type="text" class="form-control" rows="5" name="question" placeholder="質問内容" required></textarea>
       </div>
       <div class="botton-content float-right mr-3">
         <button type="submit" class="btn btn-info">質問する</button>
@@ -64,7 +64,7 @@
 
                   <ul class="list-group">
                     @foreach($yasais as $yasai)
-                      <li><a href="#">{{$yasai->category}}</a></li>
+                      <li><a href="{{ route('list.class', [$yasai->id])}}">{{$yasai->category}}</a></li>
                     @endforeach
                   </ul>
 
@@ -83,7 +83,7 @@
               <div class="card-body">
                 <ul class="list-group">
                   @foreach($fruits as $fruit)
-                    <li><a href="#">{{$fruit->category}}</a></li>
+                    <li><a href="{{ route('list.class', [$fruit->id])}}">{{$fruit->category}}</a></li>
                   @endforeach
                 </ul>
               </div>
