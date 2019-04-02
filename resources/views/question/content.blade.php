@@ -37,17 +37,18 @@
                   </ul>
                 @endif
 
-                <div class="question-content mx-3 mb-3 ">
+                <div class="question-item mx-3 mb-3 ">
+                  <div class="user-content my-3 col-md-6">
                   <h5>ユーザー名</h5>
                   @if (Auth::check())
                     <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
                   @else
                     <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
                   @endif
-
-                  <h5>カテゴリ</h5>
+                </div>
+                <div class="category-content my-3 col-md-6">
                   <input type="text" name="category_id" value="{{$question->category->id}}">
-
+                </div>
                   <textarea type="text" class="form-control" rows="5" name="answer" placeholder="回答内容" required></textarea>
                 </div>
 

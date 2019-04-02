@@ -20,7 +20,7 @@ Route::group(['prefix' => 'question'], function () {
     Route::get('/', 'QuestionController@add')->name('top');
     Route::post('/', 'QuestionController@submitQuestion');
     //質問投稿完了画面
-    Route::get('/contri', 'QuestionController@contri');
+    Route::get('/contri', 'QuestionController@contri')->name('contri');
     //質問一覧
     Route::get('/list', 'QuestionController@list')->name('list');
     //質問分類

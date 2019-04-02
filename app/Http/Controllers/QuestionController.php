@@ -33,7 +33,7 @@ class QuestionController extends Controller
         $question->fill($form);
         $question->save();
 
-        return redirect('question/view');
+        return redirect('question/contri');
     }
 
     //質問一覧
