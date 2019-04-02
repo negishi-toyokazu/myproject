@@ -22,7 +22,9 @@ Route::group(['prefix' => 'question'], function () {
     //質問投稿完了画面
     Route::get('/contri', 'QuestionController@contri');
     //質問一覧
-    Route::get('/list/{id}', 'QuestionController@list')->name('list');
+    Route::get('/list', 'QuestionController@list')->name('list');
+    //質問分類
+    Route::get('/list/{id}', 'QuestionController@listClass')->name('list.class');
     //質問内容
     Route::get('/content/{id}', 'QuestionController@content')->name('content');
     Route::post('/content/{id}', 'QuestionController@answer');

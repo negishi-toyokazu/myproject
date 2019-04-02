@@ -37,8 +37,8 @@
               <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
             </li>
             <li class="nav-item">
-              
-              <a class="nav-link" href="#">質問一覧</a>
+
+              <a class="nav-link" href="{{ route('list')}}">質問一覧</a>
 
             </li>
           </ul>

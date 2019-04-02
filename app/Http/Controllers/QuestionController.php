@@ -37,13 +37,21 @@ class QuestionController extends Controller
     }
 
     //質問一覧
-    public function list(Request $request, $id)
+    public function list()
+    {
+      $yasais = Category::where('class', '野菜')->get();
+      $fruits = Category::where('class', '果物')->get();
+      return view('question.list', compact('yasais', 'fruits'));
+    }
+
+    //質問分類
+    public function listClass(Request $request, $id)
     {
         $category = Category::find($id);
         $questions = Question::where('category_id', $id)->get();
 
 
-        return view('question.list', compact('category','questions','id'));
+        return view('question.list_class', compact('category','questions','id'));
     }
 
     //質問内容
@@ -73,8 +81,11 @@ class QuestionController extends Controller
     //mypage
     public function mypage()
     {
-        $questions = Question::all();
-        $answers = Answer::all();
+      $user_id = Auth::id();
+      //$questions = Question::all();
+      $questions = Question::where('user_id', $user_id)->get();
+        //$answers = Answer::all();
+        $answers = Answer::where('user_id', $user_id)->get();
 
         $answers_count = Answer::all(['question_id'])
                       ->groupBy('question_id')

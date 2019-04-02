@@ -64,7 +64,7 @@
 
                   <ul class="list-group">
                     @foreach($yasais as $yasai)
-                      <li><a href="{{ route('list', [$yasai->id])}}">{{$yasai->category}}</a></li>
+                      <li><a href="{{ route('list.class', [$yasai->id])}}">{{$yasai->category}}</a></li>
                     @endforeach
                   </ul>
 
@@ -83,7 +83,7 @@
               <div class="card-body">
                 <ul class="list-group">
                   @foreach($fruits as $fruit)
-                    <li><a href="{{ route('list', [$fruit->id])}}">{{$fruit->category}}</a></li>
+                    <li><a href="{{ route('list.class', [$fruit->id])}}">{{$fruit->category}}</a></li>
                   @endforeach
                 </ul>
               </div>

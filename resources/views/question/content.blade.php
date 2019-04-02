@@ -9,6 +9,7 @@
         <div class="item bg-light p-2 my-4">
     {{--　質問内容 --}}
           <div class="question-content m-3">
+            <p>{{$question->category->category}}</p>
             <p><i class="fab fa-quora question-icon"></i> 質問内容</p>
              <div class="card bg-light mb-3 mt-3">
                <div class="content">
@@ -60,7 +61,7 @@
       {{-- 一覧に戻るボタン --}}
         <div class="row">
           <div class="mx-auto">
-            <a href="" class="btn btn-outline-primary">
+            <a href="{{route ('list')}}" class="btn btn-outline-primary">
               <i class="fas fa-undo-alt"></i>
               一覧に戻る
             </a>
