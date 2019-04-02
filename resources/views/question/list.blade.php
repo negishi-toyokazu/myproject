@@ -17,8 +17,7 @@
                 <tr>
                   <th>
 
-                    <a class="text-info" href="">
-                    
+                    <a class="text-info" href="{{ route('content', [$recode->id]) }}">
                      {{$recode->question}}
                     </a>
                   </th>

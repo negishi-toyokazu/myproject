@@ -37,6 +37,16 @@
                 @endif
 
                 <div class="question-content mx-3 mb-3 ">
+                  <h5>ユーザー名</h5>
+                  @if (Auth::check())
+                    <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
+                  @else
+                    <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
+                  @endif
+
+                  <h5>カテゴリ</h5>
+                  <input type="text" name="category_id" value="{{$question->category->id}}">
+
                   <textarea type="text" class="form-control" rows="5" name="answer" placeholder="回答内容" required></textarea>
                 </div>
 
@@ -50,7 +60,7 @@
       {{-- 一覧に戻るボタン --}}
         <div class="row">
           <div class="mx-auto">
-            <a href="{{ route('list')}}" class="btn btn-outline-primary">
+            <a href="" class="btn btn-outline-primary">
               <i class="fas fa-undo-alt"></i>
               一覧に戻る
             </a>

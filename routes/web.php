@@ -26,6 +26,9 @@ Route::group(['prefix' => 'question'], function () {
     //質問内容
     Route::get('/content/{id}', 'QuestionController@content')->name('content');
     Route::post('/content/{id}', 'QuestionController@answer');
+    //回答完了画面
+    Route::get('/answer', 'QuestionController@conpAnswer');
+
     //マイページ
     Route::get('/mypage', 'QuestionController@mypage')->middleware('auth')->name('mypage');
     //質問詳細(投稿者)

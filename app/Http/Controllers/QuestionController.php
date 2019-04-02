@@ -39,9 +39,7 @@ class QuestionController extends Controller
     //質問一覧
     public function list(Request $request, $id)
     {
-        //$categories = Category::all();
         $category = Category::find($id);
-        //$question_id = Question::all();
         $questions = Question::where('category_id', $id)->get();
 
 
@@ -54,19 +52,22 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $answers = Answer::where('question_id', $id)->get();
 
-        return view('question.content', compact('question', 'id', 'answers','category'));
+        return view('question.content', compact('question', 'id', 'answers'));
     }
 
     public function answer(Request $request, $id)
     {
         $this->validate($request, Answer::$rules);
         $answer = new Answer;
+        $category = new Category;
         $answer->question_id = $id;
+        $answer->user_id = Auth::id();
+        $answer->category_id = $request->input('category_id');
         $form = $request->all();
         $answer->fill($form);
         $answer->save();
 
-        return redirect('question/list');
+        return redirect('question/answer');
     }
 
     //mypage
@@ -107,5 +108,11 @@ class QuestionController extends Controller
     public function contri()
     {
        return view('question.question_conp');
+    }
+
+    //回答完了画面
+    public function conpAnswer()
+    {
+      return view('question.answer_conp');
     }
 }
