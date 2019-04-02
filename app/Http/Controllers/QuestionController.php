@@ -87,11 +87,11 @@ class QuestionController extends Controller
         //$answers = Answer::all();
         $answers = Answer::where('user_id', $user_id)->get();
 
-        $answers_count = Answer::all(['question_id'])
+        /*$answers_count = Answer::all(['question_id'])
                       ->groupBy('question_id')
-                      ->count('question_id');
+                      ->count('question_id');*/
 
-        return view('question.mypage', compact('questions', 'answers', 'answers_count'));
+        return view('question.mypage', compact('questions', 'answers'));
     }
 
     //質問詳細(投稿者向け)

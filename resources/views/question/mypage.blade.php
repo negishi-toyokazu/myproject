@@ -29,7 +29,7 @@
                   <td>{{$record->question}}</td>
                   <td><a class="btn btn-success" href="{{ route('detail', [$record->id]) }}" role="button">詳細</a></td>
 
-                  <td>{{$answers_count}}件</td>
+                  <td>{{ count($record->answer) }}件</td>
 
                 </tr>
               @endforeach

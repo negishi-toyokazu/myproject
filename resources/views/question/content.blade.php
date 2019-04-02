@@ -9,7 +9,8 @@
         <div class="item bg-light p-2 my-4">
     {{--　質問内容 --}}
           <div class="question-content m-3">
-            <p>{{$question->category->category}}</p>
+            <h5><b>{{$question->category->category}}</b> に関しての質問です</h5>　
+
             <p><i class="fab fa-quora question-icon"></i> 質問内容</p>
              <div class="card bg-light mb-3 mt-3">
                <div class="content">
@@ -47,7 +48,8 @@
                   @endif
                 </div>
                 <div class="category-content my-3 col-md-6">
-                  <input type="text" name="category_id" value="{{$question->category->id}}">
+                
+                  <input type="hidden" name="category_id" value="{{$question->category->id}}">
                 </div>
                   <textarea type="text" class="form-control" rows="5" name="answer" placeholder="回答内容" required></textarea>
                 </div>
