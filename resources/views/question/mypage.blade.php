@@ -41,7 +41,7 @@
                 <thead class="thead-light">
                   <tr>
                     <th>日時</th>
-                    <th>ユーザー名</th>
+                    <th>回答者</th>
                     <th>質問内容</th>
                     <th>回答</th>
                   </tr>

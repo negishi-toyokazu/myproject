@@ -28,20 +28,20 @@ class QuestionController extends Controller
         $category = new Category;
         $question->category_id = $request->input('category_id');
         $question->user_id = Auth::id();
+        $question->status = "未解決";
 
         $form = $request->all();
         if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $question->image_path = basename($path);
-      } else {
-          $news->image_path = null;
-      }
-      // フォームから送信されてきた_tokenを削除する
-      unset($form['_token']);
-      // フォームから送信されてきたimageを削除する
-      unset($form['image']);
+          $path = $request->file('image')->store('public/image');
+          $question->image_path = basename($path);
+        } else {
+            $news->image_path = null;
+        }
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+        // フォームから送信されてきたimageを削除する
+        unset($form['image']);
 
-        $question->status = "未解決";
         $question->fill($form);
         $question->save();
 

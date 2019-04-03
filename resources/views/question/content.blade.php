@@ -5,21 +5,26 @@
 
   <h2>質問詳細(一般)</h2>
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <div class="item bg-light p-2 my-4">
     {{--　質問内容 --}}
           <div class="question-content m-3">
             <h5><b>{{$question->category->category}}</b> に関しての質問です</h5>　
-            
+
             <p><i class="fab fa-quora question-icon"></i> 質問内容</p>
-             <div class="card bg-light mb-3 mt-3">
-               <div class="content">
-                 <div class="card-body">
-                   <p class="card-text">
-                     {{ $question->question }}
-                   </p>
-                 </div>
-           　　  </div>
+             <div class="card bg-light p-3">
+               <div class="image-card col-md-8">
+               @if ($question->image_path)
+                  <img src="{{ asset('storage/image/' . $question->image_path) }}" alt="" class="img-fluid img-thumbnail">
+               @endif
+               </div>
+
+               <div class="card-body">
+                 <p class="card-text">
+                   {{ $question->question }}
+                 </p>
+               </div>
+           　　
               </div>
             </div>
 
@@ -39,10 +44,10 @@
                   @endif
 
                 <div class="question-item mx-3 mb-3 ">
-                  <div class="user-content my-3 col-md-6">
-                    <h5>ユーザー名</h5>
+                  <div class="user-content my-3 col-md-6 p-0">
+                    
                       @if (Auth::check())
-                        <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
+                        <input type="hidden" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
                       @else
                         <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
                       @endif
@@ -71,20 +76,20 @@
         </div>
       </div>
       {{--　回答一覧--}}
-      <div class="col-md-5">
+      <div class="col-md-4">
         <h4>回答一覧</h4>
-          <div class="answer-list bg-light mb-3 mt-3">
-            @foreach($answers as $answer)
+          @foreach($answers as $answer)
+            <div class="answer-list bg-light mb-3 mt-3">
+              <div class="card my3">
+
+
               <p class="card-text">{{$answer->answer}}</p>
-            @endforeach
+
+
+            </div>
           </div>
+          @endforeach
       </div>
-
-      <div class="image">
-        @if ($question->image_path)
-            <img src="{{ asset('storage/image/' . $question->image_path) }}" width="100px" height="100px">
-       @endif
-      </div>
-
+    </div>
     </div>
 @endsection
