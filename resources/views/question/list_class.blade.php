@@ -2,7 +2,7 @@
 @section('title', '農家に聞こう')
 @section('content')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
-  <h2 class="my-3">質問一覧</h2>
+  <h3 class="my-4">{{$category->category}}の質問一覧</h3>
     <div class="col">
       {{--質問一覧テーブル--}}
         <div class="question-table mb-5 bg-light">

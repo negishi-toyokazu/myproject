@@ -29,8 +29,10 @@
           <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
         @endif
       </div>
-      <div class="category-content　my-3 col-md-6">
+      <div class="category-content　my-4 col-md-6">
+
         <h5>カテゴリ</h5>
+
         <select name="category_id">
           <option selected>選択してください</option>
             @foreach($categories as $category)
@@ -38,7 +40,7 @@
             @endforeach
         </select>
       </div>
-      <div class="image-content my-3 col-md-6">
+      <div class="image-content my-3 col-md-8">
         <h5>画像</h5>
         <input type="file" name="image" class="form-control-file">
       </div>
@@ -53,7 +55,7 @@
   </div>
 </div>
 <!--カテゴリ-->
-  <h3>カテゴリ</h3>
+  <h3 class="py-4">カテゴリ</h3>
     <div class="row">
       <div class="col-md-6">
         <div class="category-item">
