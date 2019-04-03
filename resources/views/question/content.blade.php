@@ -3,17 +3,16 @@
 @section('content')
 <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 
-  <h2>質問詳細(一般)</h2>
     <div class="row">
       <div class="col-md-8">
-        <div class="item bg-light p-2 my-4">
+        <div class="card bg-light p-2 my-4">
     {{--　質問内容 --}}
-          <div class="question-content m-3">
-            <h5><b>{{$question->category->category}}</b> に関しての質問です</h5>　
+          <div class="question-card m-3">
+            <h5 class="card-title"><b>{{$question->category->category}}</b> に関しての質問です</h5>　
 
-            <p><i class="fab fa-quora question-icon"></i> 質問内容</p>
+            <p class="card-subtitle m-3"><i class="fab fa-quora question-icon"></i> 質問内容</p>
              <div class="card bg-light p-3">
-               <div class="image-card col-md-8">
+               <div class="image-content col-md-8">
                @if ($question->image_path)
                   <img src="{{ asset('storage/image/' . $question->image_path) }}" alt="" class="img-fluid img-thumbnail">
                @endif
@@ -29,8 +28,8 @@
             </div>
 
      {{-- 回答　--}}
-          <div class="question-content my-5 mx-3">
-            <p><i class="fab fa-amilia answer-icon"></i> 回答欄</p>
+          <div class="answer-card my-5 mx-3">
+            <p class="card-subtitle m-3"><i class="fab fa-amilia answer-icon"></i> 回答欄</p>
 
             <div class="card bg-light p-3">
               <form action="{{ action('QuestionController@answer',[$question->id])}}" method="post" enctype="multipart/form-data">
@@ -45,7 +44,7 @@
 
                 <div class="question-item mx-3 mb-3 ">
                   <div class="user-content my-3 col-md-6 p-0">
-                    
+
                       @if (Auth::check())
                         <input type="hidden" class="form-control" name="user_id"  placeholder="ユーザー名" value="{{ Auth::user()->name }}" required>
                       @else
@@ -64,23 +63,24 @@
               </form>
             </div>
           </div>
-      </div>
-      {{-- 一覧に戻るボタン --}}
-        <div class="row">
-          <div class="mx-auto">
-            <a href="{{route ('list')}}" class="btn btn-outline-primary">
-              <i class="fas fa-undo-alt"></i>
-              一覧に戻る
-            </a>
+          {{-- 一覧に戻るボタン --}}
+          <div class="row">
+            <div class="mx-auto mb-4">
+              <a href="{{route ('list')}}" class="btn btn-outline-info">
+                <i class="fas fa-undo-alt"></i>
+                一覧に戻る
+              </a>
+            </div>
           </div>
         </div>
       </div>
       {{--　回答一覧--}}
       <div class="col-md-4">
-        <h4>回答一覧</h4>
+        <h4 class="my-4">回答一覧</h4>
+          <div class="card bg-light p-3 my-3">
           @foreach($answers as $answer)
-            <div class="answer-list bg-light mb-3 mt-3">
-              <div class="card my3">
+            <div class="answer-list-card bg-light">
+              <div class="card-body my-3">
 
 
               <p class="card-text">{{$answer->answer}}</p>
@@ -89,6 +89,7 @@
             </div>
           </div>
           @endforeach
+        </div>
       </div>
     </div>
     </div>

@@ -5,7 +5,7 @@
 
   <h2 class="my-3">マイページ</h2>
     {{--質問--}}
-      <div class="question-table mb-5 p-3">
+      <div class="question-table p-3">
         <h4 class="my-3">投稿した質問一覧</h4>
           <div class="table-responsive">
             <table class="table table-hover table-bordered">
@@ -21,7 +21,7 @@
               <tbody>
                 @foreach($questions as $record)
                   <tr>
-                    <th class="font-weight-light">{{$record->created_at}}</th>
+                    <th class="font-weight-light">{{$record->created_at->format('Y年m月d日 H時i分')}}</th>
                     <td>{{$record->status}}</td>
                     <td>{{$record->question}}</td>
                     <td><a class="btn btn-success" href="{{ route('detail', [$record->id]) }}" role="button">詳細</a></td>
@@ -39,7 +39,7 @@
             <div class="table-responsive">
               <table class="table table-hover table-bordered">
                 <thead class="thead-light">
-                  <tr>
+                  <tr class="font-weight-bold">
                     <th>日時</th>
                     <th>回答者</th>
                     <th>質問内容</th>
@@ -49,7 +49,7 @@
                 <tbody>
                   @foreach($answers as $answer)
                     <tr>
-                      <td class="font-weight-light">{{$answer->created_at}}</td>
+                      <td class="font-weight-light">{{$answer->created_at->format('Y年m月d日 H時i分')}}</td>
                       <td>{{$answer->question->user_name}}</td>
                     @if ($answer->question)
                       <td>{{$answer->question->question}}</td>

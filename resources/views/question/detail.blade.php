@@ -6,7 +6,7 @@
   <div class="col-md-8">
     <div class="item">
       <h2>質問詳細</h2>
-        <div class="question-card bg-light mb-3 mt-3">
+        <div class="question-card bg-light mb-3 mt-3 ">
           <div class="card-head">
             <h5 class="card-title">質問内容</h5>
           </div>

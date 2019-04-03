@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 @section('title', '農家に聞こう')
 @section('content')
-<h3>質問一覧</h3>
+<link href="{{ asset('css/top.css') }}" rel="stylesheet">
+
+<h3 class="my-5">カテゴリから質問を探す</h3>
   <div class="row">
 
     <div class="col-md-6">

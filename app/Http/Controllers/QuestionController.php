@@ -35,7 +35,7 @@ class QuestionController extends Controller
           $path = $request->file('image')->store('public/image');
           $question->image_path = basename($path);
         } else {
-            $news->image_path = null;
+            $question->image_path = null;
         }
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
