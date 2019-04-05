@@ -6,7 +6,7 @@
   <div class="col-md-8">
     <div class="item">
       <h2>質問詳細</h2>
-        <div class="question-card bg-light mb-3 mt-3 ">
+        <div class="question-card bg-light my-3 ">
           <div class="card-head">
             <h5 class="card-title">質問内容</h5>
           </div>
@@ -18,7 +18,7 @@
 
     <div class="item">
       <h2>回答一覧</h2>
-        <div class="answer-card bg-light mb-3">
+        <div class="answer-card bg-light my-3">
           <div class="card-head">
             <h5 class="card-title">回答内容</h5>
           </div>
@@ -31,7 +31,9 @@
 
         <form action="{{ route('kaiketu', [$question->id]) }}" method="POST" class="form-horizontal">
           @csrf
+          <div class="botton-content float-right mr-2">
             <button type="submit" name="kaiketu" class="btn btn-success">解決</button>
+          </div>
         </form>
     </div>
   </div>

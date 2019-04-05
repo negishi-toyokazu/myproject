@@ -12,13 +12,21 @@ use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
     //toppage
-    public function add()
+    public function add(Request $request)
     {
+        $keyword = $request->input('keyword');
+
+        if (!empty($keyword)) {
+            $questions = Question::where('question', 'like', '%'.$keyword.'%')->paginate(10);
+        }else{
+          $questions = Question::where('question')->paginate(10);
+        }
+
         $yasais = Category::where('class', '野菜')->get();
         $fruits = Category::where('class', '果物')->get();
         $categories = Category::all();
 
-        return view('question.index', compact('yasais', 'fruits', 'categories'));
+        return view('question.index', compact('yasais', 'fruits', 'categories', 'questions'));
     }
 
     public function submitQuestion(Request $request)
@@ -32,16 +40,14 @@ class QuestionController extends Controller
 
         $form = $request->all();
         if (isset($form['image'])) {
-          $path = $request->file('image')->store('public/image');
-          $question->image_path = basename($path);
+            $path = $request->file('image')->store('public/image');
+            $question->image_path = basename($path);
         } else {
             $question->image_path = null;
         }
-        // フォームから送信されてきた_tokenを削除する
-        unset($form['_token']);
-        // フォームから送信されてきたimageを削除する
-        unset($form['image']);
 
+        unset($form['_token']);
+        unset($form['image']);
         $question->fill($form);
         $question->save();
 
@@ -91,13 +97,22 @@ class QuestionController extends Controller
     }
 
     //mypage
-    public function mypage()
+    public function mypage(Request $request)
     {
         $user_id = Auth::id();
-        $questions = Question::where('user_id', $user_id)->get();
-        $answers = Answer::where('user_id', $user_id)->get();
+        $status = $request->input('status');
+        if ($status == 'unresolved') {
+            $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '未解決')->paginate(10);
+        } else{
+            $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '解決済')->paginate(10);
+        }
 
-        return view('question.mypage', compact('questions', 'answers'));
+
+       $questions = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
+
+        $answers = Answer::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('question.mypage', compact('questions', 'answers','results','status'));
     }
 
     //質問詳細(投稿者向け)

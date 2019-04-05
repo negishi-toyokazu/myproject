@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/question.css') }}" rel="stylesheet">
     {{--font--}}
-
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" type="text/css">
 
 
@@ -37,7 +36,7 @@
               <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('list')}}">質問一覧</a>
+              <a class="nav-link" href="{{ route('list')}}">カテゴリから質問を探す</a>
             </li>
           </ul>
         </div>

@@ -10,6 +10,9 @@
   </a>
 </div>
 <!--質問投稿フォーム-->
+
+
+
 <div class="col-md-8">
   <div class="card bg-light p-3 my-5">
     <form action="{{ action('QuestionController@submitQuestion')}}" method="post" enctype="multipart/form-data">
@@ -54,10 +57,12 @@
     </form>
   </div>
 </div>
+
+
 <!--カテゴリ-->
   <h3 class="py-4">カテゴリ</h3>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 mb-5">
         <div class="category-item">
           <div class="category-card bg-light">
               <div class="card-header">
@@ -96,5 +101,50 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-7 p-3">
+
+      <h3 class="py-2">キーワードから質問を検索</h3>
+      <div class="card bg-light p-3 mb-4">
+        <div class="search-item my-2">
+          <form>
+            <div class="form-group mx-3">
+              <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力">
+            <div class="float-right my-3">
+              <input type="submit" value="検索" class="btn btn-info">
+              <a href="{{ route('top') }}" class="btn btn-secondary">クリア</a>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      @if(count($questions) > 0)
+        <div class="search-card bg-light">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>カテゴリ</th>
+                <th>質問内容</th>
+              </tr>
+              @foreach($questions as $question)
+                <tr>
+                  <td>{{$question->category->category}}</td>
+                  <td><a href="{{ route('content', [$question->id]) }}">{{ $question->question }}</a></td>
+                </tr>
+              @endforeach
+            </table>
+          </div>
+        </div>
+      @endif
+      <div class="paginate">
+
+        {{ $questions->links('pagination::bootstrap-4') }}
+
+
+      </div>
+    </div>
+    　　　
+
 
     @endsection
