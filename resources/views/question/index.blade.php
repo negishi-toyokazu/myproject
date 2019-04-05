@@ -14,7 +14,8 @@
 
 
 <div class="col-md-8">
-  <div class="card bg-light p-3 my-5">
+  <h3>農家に質問してみよう</h3>
+  <div class="card bg-light p-3 my-3">
     <form action="{{ action('QuestionController@submitQuestion')}}" method="post" enctype="multipart/form-data">
       @csrf
         @if (count($errors) > 0)

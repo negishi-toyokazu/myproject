@@ -7,22 +7,22 @@
   {{--検索フォーム--}}
   <div class="col-md-5">
     <div class="card bg-light p-3">
-  <form class="mypage_form" action="{{route('mypage')}}" accept-charset="UTF-8" method="get">
-  <div class="form-group">
-    <label>ステータス</label>
-    <select class="form-control" name="status">
-    <option value="">選択してください</option>
-    <option value="unresolved">未解決</option>
-    <option value="resolved">解決済</option>
-    </select>
+      <form class="mypage_form" action="{{route('mypage')}}" accept-charset="UTF-8" method="get">
+        <div class="form-group">
+          <label>ステータス</label>
+            <select class="form-control" name="status">
+              <option value="">選択してください</option>
+              <option value="unresolved">未解決</option>
+              <option value="resolved">解決済</option>
+            </select>
+          </div>
+          <div class="float-right">
+            <button type="submit" class="btn btn-primary">絞り込む</button>
+            <a href="{{ route('mypage') }}" class="btn btn-secondary">クリア</a>
+          </div>
+      </form>
+    </div>
   </div>
-  <div class="float-right">
-  <button type="submit" class="btn btn-primary">絞り込む</button>
-  <a href="{{ route('mypage') }}" class="btn btn-secondary">クリア</a>
-</div>
-  </form>
-</div>
-</div>
     {{--質問--}}
       <div class="question-table p-3">
         <h4 class="my-3">投稿した質問一覧</h4>
@@ -85,7 +85,6 @@
                 <thead class="thead-light">
                   <tr class="font-weight-bold">
                     <th>日時</th>
-
                     <th>質問内容</th>
                     <th>回答</th>
                   </tr>
@@ -94,7 +93,6 @@
                   @foreach($answers as $answer)
                     <tr>
                       <td class="font-weight-light">{{$answer->created_at->format('Y年m月d日 H時i分')}}</td>
-
                     @if ($answer->question)
                       <td>{{$answer->question->question}}</td>
                     @else
@@ -111,8 +109,8 @@
                 </tbody>
               </table>
               <div class="">
-  {{ $answers->links() }}
-  </div>
+                {{ $answers->links() }}
+              </div>
             </div>
           </div>
 @endsection

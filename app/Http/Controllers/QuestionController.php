@@ -18,8 +18,8 @@ class QuestionController extends Controller
 
         if (!empty($keyword)) {
             $questions = Question::where('question', 'like', '%'.$keyword.'%')->paginate(10);
-        }else{
-          $questions = Question::where('question')->paginate(10);
+        } else {
+            $questions = Question::where('question')->paginate(10);
         }
 
         $yasais = Category::where('class', '野菜')->get();
@@ -103,16 +103,16 @@ class QuestionController extends Controller
         $status = $request->input('status');
         if ($status == 'unresolved') {
             $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '未解決')->paginate(10);
-        } else{
+        } else {
             $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '解決済')->paginate(10);
         }
 
 
-       $questions = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
+        $questions = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
 
         $answers = Answer::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('question.mypage', compact('questions', 'answers','results','status'));
+        return view('question.mypage', compact('questions', 'answers', 'results', 'status'));
     }
 
     //質問詳細(投稿者向け)
