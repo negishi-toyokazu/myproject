@@ -14,9 +14,9 @@
 
 
 <div class="col-md-8">
-  <h3>農家に質問してみよう</h3>
+  <h2><span class="badge badge-success">農家に質問してみよう</span></h2>
   <div class="card bg-light p-3 my-3">
-    <form action="{{ action('QuestionController@submitQuestion')}}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('submit')}}" method="post" enctype="multipart/form-data">
       @csrf
         @if (count($errors) > 0)
           <ul>
@@ -61,7 +61,7 @@
 
 
 <!--カテゴリ-->
-  <h3 class="py-4">カテゴリ</h3>
+  <h3 class="py-4"><span class="badge badge-pill badge-success">カテゴリ</span></h3>
     <div class="row">
       <div class="col-md-6 mb-5">
         <div class="category-item">
@@ -105,45 +105,22 @@
 
     <div class="col-md-7 p-3">
 
-      <h3 class="py-2">キーワードから質問を検索</h3>
+      <h3 class="py-2"><span class="badge badge-pill badge-success">キーワードから質問を検索</span></h3>
       <div class="card bg-light p-3 mb-4">
         <div class="search-item my-2">
-          <form>
-            <div class="form-group mx-3">
+          <form action="{{ route('search')}}">
+            <div class="form-group input-group">
               <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力">
-            <div class="float-right my-3">
-              <input type="submit" value="検索" class="btn btn-info">
+
+              <input type="submit" value="検索" class="btn btn-info mr-1">
               <a href="{{ route('top') }}" class="btn btn-secondary">クリア</a>
-            </div>
+
             </div>
           </form>
         </div>
       </div>
 
-      @if(count($questions) > 0)
-        <div class="search-card bg-light">
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <tr>
-                <th>カテゴリ</th>
-                <th>質問内容</th>
-              </tr>
-              @foreach($questions as $question)
-                <tr>
-                  <td>{{$question->category->category}}</td>
-                  <td><a href="{{ route('content', [$question->id]) }}">{{ $question->question }}</a></td>
-                </tr>
-              @endforeach
-            </table>
-          </div>
-        </div>
-      @endif
-      <div class="paginate">
 
-        {{ $questions->links('pagination::bootstrap-4') }}
-
-
-      </div>
     </div>
     　　　
 

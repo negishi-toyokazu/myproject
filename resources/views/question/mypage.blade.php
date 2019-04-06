@@ -5,19 +5,20 @@
 
   <h2 class="my-3">マイページ</h2>
   {{--検索フォーム--}}
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div class="card bg-light p-3">
       <form class="mypage_form" action="{{route('mypage')}}" accept-charset="UTF-8" method="get">
-        <div class="form-group">
+
           <label>ステータス</label>
+          <div class="form-group input-group">
             <select class="form-control" name="status">
               <option value="">選択してください</option>
               <option value="unresolved">未解決</option>
               <option value="resolved">解決済</option>
             </select>
-          </div>
-          <div class="float-right">
-            <button type="submit" class="btn btn-primary">絞り込む</button>
+
+
+            <button type="submit" class="btn btn-primary mr-1">絞り込む</button>
             <a href="{{ route('mypage') }}" class="btn btn-secondary">クリア</a>
           </div>
       </form>

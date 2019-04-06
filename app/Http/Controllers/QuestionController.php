@@ -14,19 +14,22 @@ class QuestionController extends Controller
     //toppage
     public function add(Request $request)
     {
-        $keyword = $request->input('keyword');
-
-        if (!empty($keyword)) {
-            $questions = Question::where('question', 'like', '%'.$keyword.'%')->paginate(10);
-        } else {
-            $questions = Question::where('question')->paginate(10);
-        }
-
         $yasais = Category::where('class', '野菜')->get();
         $fruits = Category::where('class', '果物')->get();
         $categories = Category::all();
 
-        return view('question.index', compact('yasais', 'fruits', 'categories', 'questions'));
+        return view('question.index', compact('yasais', 'fruits', 'categories'));
+    }
+    //keyword
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        if (!empty($keyword)) {
+            $questions = Question::where('question', 'like', '%'.$keyword.'%')->get();
+        }
+
+        return view('question.search', compact('questions'));
     }
 
     public function submitQuestion(Request $request)

@@ -18,7 +18,9 @@
 Route::group(['prefix' => 'question'], function () {
     //toppage
     Route::get('/', 'QuestionController@add')->name('top');
-    Route::post('/', 'QuestionController@submitQuestion');
+    Route::post('/', 'QuestionController@submitQuestion')->name('submit');
+    //キーワード検索結果
+    Route::get('/search', 'QuestionController@search')->name('search');
     //質問投稿完了画面
     Route::get('/contri', 'QuestionController@contri')->name('contri');
     //質問一覧
