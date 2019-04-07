@@ -110,7 +110,7 @@
             </div>
             @endif
             <div class="form-group input-group">
-              <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力" data-error="キーワードを入力してください" required>
+              <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力"  required>
               <input type="submit" value="検索" class="btn btn-info mx-1">
               <a href="{{ route('top') }}" class="btn btn-secondary">クリア</a>
           </form>
