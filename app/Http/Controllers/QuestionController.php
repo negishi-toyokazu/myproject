@@ -23,13 +23,14 @@ class QuestionController extends Controller
     //keyword
     public function search(Request $request)
     {
+        $this->validate($request, ['keyword' => 'required']);
         $keyword = $request->input('keyword');
 
         if (!empty($keyword)) {
             $questions = Question::where('question', 'like', '%'.$keyword.'%')->get();
         }
 
-        return view('question.search', compact('questions'));
+        return view('question.search', compact('questions', 'keyword'));
     }
 
     public function submitQuestion(Request $request)

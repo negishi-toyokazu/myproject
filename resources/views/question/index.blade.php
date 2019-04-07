@@ -3,28 +3,23 @@
 @section('content')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
 
-
 <div class="logo">
   <a href="{{ route('top')}}">
     <img src="{{ asset('image/logo1.png') }}" class="mx-auto d-block" width="480" height="151">
   </a>
 </div>
 <!--質問投稿フォーム-->
-
-
-
 <div class="col-md-8">
   <h2><span class="badge badge-success">農家に質問してみよう</span></h2>
   <div class="card bg-light p-3 my-3">
     <form action="{{ route('submit')}}" method="post" enctype="multipart/form-data">
       @csrf
-        @if (count($errors) > 0)
-          <ul>
-            @foreach($errors->all() as $e)
-              <li>{{ $e }}</li>
-            @endforeach
-          </ul>
-        @endif
+      @if($errors->has('user_name','question'))
+      <div class="error">
+        <p>{{ $errors->first('user_name','question') }}</p>
+      </div>
+      @endif
+
       <div class="user-content my-3 col-md-6">
         <h5>ユーザー名</h5>
         @if (Auth::check())
@@ -104,18 +99,20 @@
     </div>
 
     <div class="col-md-7 p-3">
-
       <h3 class="py-2"><span class="badge badge-pill badge-success">キーワードから質問を検索</span></h3>
       <div class="card bg-light p-3 mb-4">
         <div class="search-item my-2">
           <form action="{{ route('search')}}">
-            <div class="form-group input-group">
-              <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力">
-
-              <input type="submit" value="検索" class="btn btn-info mr-1">
-              <a href="{{ route('top') }}" class="btn btn-secondary">クリア</a>
-
+            @csrf
+            @if($errors->has('keyword'))
+            <div class="error">
+              <p>{{ $errors->first('keyword') }}</p>
             </div>
+            @endif
+            <div class="form-group input-group">
+              <input type="text" class="form-control" name="keyword" placeholder="キーワードを入力" data-error="キーワードを入力してください" required>
+              <input type="submit" value="検索" class="btn btn-info mx-1">
+              <a href="{{ route('top') }}" class="btn btn-secondary">クリア</a>
           </form>
         </div>
       </div>

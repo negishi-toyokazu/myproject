@@ -2,6 +2,9 @@
 @section('title', '農家に聞こう')
 @section('content')
 
+<div class="">
+  <h4 class="text-danger">『{{$keyword}}』の検索結果は{{ count($questions) }}件です</h4>
+</div>
 @if(count($questions) > 0)
   <div class="search-card bg-light">
     <div class="table-responsive">
@@ -10,22 +13,24 @@
           <th>カテゴリ</th>
           <th>質問内容</th>
         </tr>
-        @foreach($questions as $question)
-          <tr>
-            <td>{{$question->category->category}}</td>
-            <td><a href="{{ route('content', [$question->id]) }}">{{ $question->question }}</a></td>
-          </tr>
-        @endforeach
+      @foreach($questions as $question)
+        <tr>
+          <td>{{$question->category->category}}</td>
+          <td><a href="{{ route('content', [$question->id]) }}">{{ $question->question }}</a></td>
+        </tr>
+      @endforeach
       </table>
     </div>
+  </div>
 @else
-  <p>キーワードに一致する質問がありませんのでキーワードを変更してください</p>
-  @endif
-</div>
+  <h4>キーワードに一致する質問がありませんのでキーワードを変更してください</h4>
+@endif
+  <div class="my-2">
+    <a href="{{route ('top')}}" class="btn btn-outline-info">
+      <i class="fas fa-undo-alt"></i>
+      TOPに戻る
+    </a>
+  </div>
 
-<a href="{{route ('top')}}" class="btn btn-outline-info">
-  <i class="fas fa-undo-alt"></i>
-  TOPに戻る
-</a>
 
 @endsection

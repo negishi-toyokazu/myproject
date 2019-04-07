@@ -18,7 +18,7 @@
             </select>
 
 
-            <button type="submit" class="btn btn-primary mr-1">絞り込む</button>
+            <button type="submit" class="btn btn-primary mx-1">絞り込む</button>
             <a href="{{ route('mypage') }}" class="btn btn-secondary">クリア</a>
           </div>
       </form>
