@@ -23,7 +23,7 @@
     </div>
   </div>
 @else
-  <h4>キーワードに一致する質問がありませんのでキーワードを変更してください</h4>
+  <p>キーワードに一致する質問がありませんのでキーワードを変更してください</p>
 @endif
   <div class="my-2">
     <a href="{{route ('top')}}" class="btn btn-outline-info">
@@ -31,6 +31,5 @@
       TOPに戻る
     </a>
   </div>
-
 
 @endsection
