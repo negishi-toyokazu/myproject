@@ -32,10 +32,10 @@
 
         <h5>カテゴリ</h5>
 
-        <select name="category_id">
-          <option selected>選択してください</option>
+        <select name="category_id" required>
+          <option value="">選択してください</option>
             @foreach($categories as $category)
-              <option value="{{$category->id}}" name="category_id">{{$category->category}}</option>
+              <option value="{{$category->id}}" name="category_id" required>{{$category->category}}</option>
             @endforeach
         </select>
       </div>
