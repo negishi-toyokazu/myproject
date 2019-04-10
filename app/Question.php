@@ -14,8 +14,6 @@ class Question extends Model
         'user_name' => 'required',
     );
 
-
-
     protected $fillable = [
         'user_name', 'question', ];
 

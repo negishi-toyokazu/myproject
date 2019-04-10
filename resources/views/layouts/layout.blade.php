@@ -15,6 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="./font-awesome.css" rel="stylesheet">
 
     {{-- ファビコン --}}
     <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">

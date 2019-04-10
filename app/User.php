@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('Answer::class');
     }
+
+    public function bestAnswer()
+    {
+        return $this->hasMany('Answer::Best_anser');
+    }
 }

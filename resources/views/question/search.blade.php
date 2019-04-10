@@ -2,9 +2,9 @@
 @section('title', '農家に聞こう')
 @section('content')
 
-<div class="">
+<div class="col-md-8">
   <h4 class="text-danger">『{{$keyword}}』の検索結果は{{ count($questions) }}件です</h4>
-</div>
+
 @if(count($questions) > 0)
   <div class="search-card bg-light">
     <div class="table-responsive">
@@ -30,6 +30,7 @@
       <i class="fas fa-undo-alt"></i>
       TOPに戻る
     </a>
+  </div>
   </div>
 
 @endsection

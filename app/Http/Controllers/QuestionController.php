@@ -105,6 +105,8 @@ class QuestionController extends Controller
     {
         $user_id = Auth::id();
         $status = $request->input('status');
+        $user = Auth::user();
+
         if ($status == 'unresolved') {
             $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '未解決')->paginate(10);
         } else {
@@ -116,8 +118,33 @@ class QuestionController extends Controller
 
         $answers = Answer::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('question.mypage', compact('questions', 'answers', 'results', 'status'));
+        return view('question.mypage', compact('questions', 'answers', 'results', 'status', 'user'));
     }
+    //プロフィール編集画面
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        return view('question.edit', compact('user'));
+    }
+    //プロフィールupdate
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->introduction = $request->input('introduction');
+
+        $form = $request->all();
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $user->image_path = basename($path);
+        }
+        unset($form['_token']);
+        unset($form['image']);
+        $user->fill($form);
+        $user->save();
+
+        return redirect('question/mypage');
+    }
+
 
     //質問詳細(投稿者向け)
     public function detail(Request $request, $id)
@@ -131,6 +158,12 @@ class QuestionController extends Controller
     public function status(Request $request, $id)
     {
         Question::where('id', $id)->update(['status' => '解決済']);
+        return redirect('question/mypage');
+    }
+
+    public function best(Request $request, $id)
+    {
+        Answer::where('id', $id)->update(['status' => 'ベストアンサー']);
         return redirect('question/mypage');
     }
 
