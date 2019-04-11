@@ -152,7 +152,10 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $answers = Answer::where('question_id', $id)->get();
 
-        return view('question.detail', compact('question', 'id', 'answers'));
+        # ベストアンサーの回答が存在することを確認
+        $has_best_answer = Answer::where('question_id', $id)->where('status', 'ベストアンサー')->count();
+
+        return view('question.detail', compact('question', 'id', 'answers', 'has_best_answer'));
     }
 
     public function status(Request $request, $id)

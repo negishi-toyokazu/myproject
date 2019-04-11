@@ -25,7 +25,7 @@
           <div class="card-body my-3">
           <p class="card-text">{{$answer->answer}}</p>
         </div>
-          @if($answer->status == NULL)
+          @unless ($has_best_answer > 0)
             <div class="card-footer">
               <form action="{{ route('best', [$answer->id]) }}" method="POST" class="form-horizontal">
                 @csrf
@@ -34,7 +34,7 @@
                 </div>
               </form>
             </div>
-          @endif
+          @endunless
       </div>
       @endforeach
 
