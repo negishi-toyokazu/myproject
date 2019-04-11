@@ -9,16 +9,22 @@
 .question-card
 {
   border-radius: 9px;
-  border-bottom: solid 6px #aac5de;
+  border: solid 3px #aac5de;
 }
 
 .answer-card
 {
   border-radius: 9px;
-  border-bottom: solid 6px #ECA5B2;
+  border: solid 3px #ECA5B2;
 }
 
 .answer-list-card{
   border-radius: 9px;
-  border-bottom: solid 6px #a472af;
+  border: solid 3px #a472af;
+}
+
+.best-card
+{
+  border-radius: 9px;
+  border: double 3px;
 }

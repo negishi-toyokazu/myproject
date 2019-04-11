@@ -6,7 +6,7 @@ use App\User;
 use App\Question;
 use App\Category;
 use App\Answer;
-//追加
+
 use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
@@ -72,7 +72,6 @@ class QuestionController extends Controller
         $category = Category::find($id);
         $questions = Question::where('category_id', $id)->get();
 
-
         return view('question.list_class', compact('category', 'questions', 'id'));
     }
 
@@ -82,7 +81,9 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $answers = Answer::where('question_id', $id)->get();
 
-        return view('question.content', compact('question', 'id', 'answers'));
+        $best_answer = Answer::where('question_id', $id)->where('status', 'ベストアンサー')->get();
+
+        return view('question.content', compact('question', 'id', 'answers', 'best_answer'));
     }
 
     public function answer(Request $request, $id)
@@ -113,9 +114,7 @@ class QuestionController extends Controller
             $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '解決済')->paginate(10);
         }
 
-
         $questions = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
-
         $answers = Answer::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('question.mypage', compact('questions', 'answers', 'results', 'status', 'user'));
@@ -126,6 +125,7 @@ class QuestionController extends Controller
         $user = Auth::user();
         return view('question.edit', compact('user'));
     }
+
     //プロフィールupdate
     public function update(Request $request)
     {
@@ -145,14 +145,14 @@ class QuestionController extends Controller
         return redirect('question/mypage');
     }
 
-
     //質問詳細(投稿者向け)
     public function detail(Request $request, $id)
     {
         $question = Question::find($id);
         $answers = Answer::where('question_id', $id)->get();
+        $has_best_answer = Answer::where('question_id', $id)->where('status', 'ベストアンサー')->count();
 
-        return view('question.detail', compact('question', 'id', 'answers'));
+        return view('question.detail', compact('question', 'id', 'answers', 'has_best_answer'));
     }
 
     public function status(Request $request, $id)
