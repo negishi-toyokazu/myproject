@@ -3,14 +3,15 @@ body{
   }
 
 // Font
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;subset=japanese');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+//https://fonts.googleapis.com/css?family=M+PLUS+1p
+//https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;subset=japanese
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 
 .navbar-brand {
   color: white !important;
@@ -30,4 +31,8 @@ body{
 
 ul {
   list-style-type: none;
+}
+
+a {
+  color: #17a2b8;
 }

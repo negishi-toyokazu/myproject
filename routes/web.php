@@ -18,7 +18,9 @@
 Route::group(['prefix' => 'question'], function () {
     //toppage
     Route::get('/', 'QuestionController@add')->name('top');
-    Route::post('/', 'QuestionController@submitQuestion');
+    Route::post('/', 'QuestionController@submitQuestion')->name('submit');
+    //キーワード検索結果
+    Route::get('/search', 'QuestionController@search')->name('search');
     //質問投稿完了画面
     Route::get('/contri', 'QuestionController@contri')->name('contri');
     //質問一覧
@@ -33,9 +35,14 @@ Route::group(['prefix' => 'question'], function () {
 
     //マイページ
     Route::get('/mypage', 'QuestionController@mypage')->middleware('auth')->name('mypage');
+    //プロフィール編集画面
+    Route::get('/mypage/edit', 'QuestionController@edit')->middleware('auth')->name('edit');
+    Route::post('/mypage/edit', 'QuestionController@update')->middleware('auth')->name('update');
+
     //質問詳細(投稿者)
     Route::get('/detail/{id}', 'QuestionController@detail')->name('detail');
-    Route::post('/detail/{id}', 'QuestionController@status')->name('kaiketu');
+    Route::post('/detail/{id}/kaiketu', 'QuestionController@status')->name('kaiketu');
+    Route::post('/detail/{id}/best', 'QuestionController@best')->name('best');
     //新規登録
     Route::get('/register', 'Auth\RegisterController@getRegister')->name('touroku');
     Route::post('/register', 'Auth\RegisterController@create')->name('register.post');

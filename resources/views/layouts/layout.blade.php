@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/question.css') }}" rel="stylesheet">
     {{--font--}}
-
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" type="text/css">
 
 
@@ -16,6 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="./font-awesome.css" rel="stylesheet">
 
     {{-- ファビコン --}}
     <link rel="shortcut icon" href="{{ asset('image/favicon.ico') }}">
@@ -37,44 +37,43 @@
               <a class="nav-link" href="{{ route('mypage')}}">マイページ</a>
             </li>
             <li class="nav-item">
-
-              <a class="nav-link" href="{{ route('list')}}">質問一覧</a>
-
+              <a class="nav-link" href="{{ route('list')}}">カテゴリから質問を探す</a>
             </li>
           </ul>
         </div>
-        @guest
-        <div class="top-right links form-inline">
-          <a href="{{ route('setuzoku') }}" class="btn btn-primary mx-2"><i class="fas fa-key"></i> ログイン</a>
-        @if (Route::has('register'))
-          <a href="{{ route('touroku') }}" class="btn btn-success"><i class="fas fa-registered"></i> 新規登録</a>
-        @endif
-        @else
-          <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                {{ __('ログアウト') }}
+        @guest
+          <div class="top-right links form-inline">
+            <a href="{{ route('setuzoku') }}" class="btn btn-primary mx-2"><i class="fas fa-key"></i> ログイン</a>
+          @if (Route::has('register'))
+            <a href="{{ route('touroku') }}" class="btn btn-success"><i class="fas fa-registered"></i> 新規登録</a>
+          @endif
+        @else
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
               </a>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                  {{ __('ログアウト') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
-              </form>
-            </div>
-          </li>
+                </form>
+              </div>
+            </li>
+          </div>
         @endguest
     </nav>
 {{-- ここまでナビゲーションバー --}}
+
             <div class="container">
               <main class="py-4">
                   {{-- コンテンツをここに入れる --}}
                   @yield('content')
               </main>
             </div>
-        </div>
-
   </body>
 </html>

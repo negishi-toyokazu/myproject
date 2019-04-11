@@ -25,4 +25,9 @@ class Answer extends Model
     {
         return $this->belongsTo('App\Question');
     }
+
+    public function bestAnswer()
+    {
+        return $this->hasMany('Answer::Best_anser');
+    }
 }

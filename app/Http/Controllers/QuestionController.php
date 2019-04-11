@@ -12,13 +12,25 @@ use Illuminate\Support\Facades\Auth;
 class QuestionController extends Controller
 {
     //toppage
-    public function add()
+    public function add(Request $request)
     {
         $yasais = Category::where('class', '野菜')->get();
         $fruits = Category::where('class', '果物')->get();
         $categories = Category::all();
 
         return view('question.index', compact('yasais', 'fruits', 'categories'));
+    }
+    //keyword
+    public function search(Request $request)
+    {
+        $this->validate($request, ['keyword' => 'required']);
+        $keyword = $request->input('keyword');
+
+        if (!empty($keyword)) {
+            $questions = Question::where('question', 'like', '%'.$keyword.'%')->get();
+        }
+
+        return view('question.search', compact('questions', 'keyword'));
     }
 
     public function submitQuestion(Request $request)
@@ -29,7 +41,17 @@ class QuestionController extends Controller
         $question->category_id = $request->input('category_id');
         $question->user_id = Auth::id();
         $question->status = "未解決";
+
         $form = $request->all();
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $question->image_path = basename($path);
+        } else {
+            $question->image_path = null;
+        }
+
+        unset($form['_token']);
+        unset($form['image']);
         $question->fill($form);
         $question->save();
 
@@ -39,9 +61,9 @@ class QuestionController extends Controller
     //質問一覧
     public function list()
     {
-      $yasais = Category::where('class', '野菜')->get();
-      $fruits = Category::where('class', '果物')->get();
-      return view('question.list', compact('yasais', 'fruits'));
+        $yasais = Category::where('class', '野菜')->get();
+        $fruits = Category::where('class', '果物')->get();
+        return view('question.list', compact('yasais', 'fruits'));
     }
 
     //質問分類
@@ -51,7 +73,7 @@ class QuestionController extends Controller
         $questions = Question::where('category_id', $id)->get();
 
 
-        return view('question.list_class', compact('category','questions','id'));
+        return view('question.list_class', compact('category', 'questions', 'id'));
     }
 
     //質問内容
@@ -79,20 +101,50 @@ class QuestionController extends Controller
     }
 
     //mypage
-    public function mypage()
+    public function mypage(Request $request)
     {
-      $user_id = Auth::id();
-      //$questions = Question::all();
-      $questions = Question::where('user_id', $user_id)->get();
-        //$answers = Answer::all();
-        $answers = Answer::where('user_id', $user_id)->get();
+        $user_id = Auth::id();
+        $status = $request->input('status');
+        $user = Auth::user();
 
-        $answers_count = Answer::all(['question_id'])
-                      ->groupBy('question_id')
-                      ->count('question_id');
+        if ($status == 'unresolved') {
+            $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '未解決')->paginate(10);
+        } else {
+            $results = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->where('status', '解決済')->paginate(10);
+        }
 
-        return view('question.mypage', compact('questions', 'answers', 'answers_count'));
+
+        $questions = Question::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
+
+        $answers = Answer::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('question.mypage', compact('questions', 'answers', 'results', 'status', 'user'));
     }
+    //プロフィール編集画面
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        return view('question.edit', compact('user'));
+    }
+    //プロフィールupdate
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->introduction = $request->input('introduction');
+
+        $form = $request->all();
+        if (isset($form['image'])) {
+            $path = $request->file('image')->store('public/image');
+            $user->image_path = basename($path);
+        }
+        unset($form['_token']);
+        unset($form['image']);
+        $user->fill($form);
+        $user->save();
+
+        return redirect('question/mypage');
+    }
+
 
     //質問詳細(投稿者向け)
     public function detail(Request $request, $id)
@@ -109,6 +161,12 @@ class QuestionController extends Controller
         return redirect('question/mypage');
     }
 
+    public function best(Request $request, $id)
+    {
+        Answer::where('id', $id)->update(['status' => 'ベストアンサー']);
+        return redirect('question/mypage');
+    }
+
     //新規登録完了画面
     public function conpRegister()
     {
@@ -118,12 +176,12 @@ class QuestionController extends Controller
     //質問投稿画面
     public function contri()
     {
-       return view('question.question_conp');
+        return view('question.question_conp');
     }
 
     //回答完了画面
     public function conpAnswer()
     {
-      return view('question.answer_conp');
+        return view('question.answer_conp');
     }
 }

@@ -1,6 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans+JP&amp;
+@import url(https://fonts.googleapis.com/css?family=M+PLUS+1p);@charset "UTF-8";
 
-subset=japanese);@charset "UTF-8";
 body {
   background: #eee url(http://subtlepatterns.com/patterns/leaves.png);
 }
@@ -10675,5 +10674,9 @@ a.text-dark:focus {
 
 ul {
   list-style-type: none;
+}
+
+a {
+  color: #17a2b8;
 }
 
