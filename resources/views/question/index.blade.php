@@ -11,7 +11,7 @@
 <!--質問投稿フォーム-->
 <div class="col-md-8">
   <h2><span class="badge badge-success">農家に質問してみよう</span></h2>
-  <div class="card bg-light p-3 my-3">
+  <div class="card bg-light p-3 my-3 shadow">
     <form action="{{ route('submit')}}" method="post" enctype="multipart/form-data">
       @csrf
       @if($errors->has('user_name','question'))

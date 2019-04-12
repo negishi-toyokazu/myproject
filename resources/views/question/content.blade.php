@@ -125,7 +125,7 @@
             <div class="answer-list-card bg-light shadow mt-5 mb-3">
               <div class="card-body my-3">
                 <div class="card-text mx-2">
-                  <p>{{$answer->user->name}} さん</p>
+                  
                   <p>{{$answer->answer}}</p>
                 </div>
               </div>

@@ -1,5 +1,7 @@
 <?php
 
+Auth::routes();
+
 Route::group(['prefix' => 'question'], function () {
     //toppage
     Route::get('/', 'QuestionController@add')->name('top');
@@ -39,5 +41,3 @@ Route::group(['prefix' => 'question'], function () {
     Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');
     Route::post('/signin', 'QuestionController@postSignin');
 });
-
-Auth::routes();
