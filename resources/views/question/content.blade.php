@@ -47,13 +47,24 @@
               <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://127.0.0.1:8000/question/content/{{ route('content', [$question->id]) }}" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
                 <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
             </div>
+            {{--お気に入り登録ボタン--}}
+            @if (Auth::check())
+            @unless ($has_favorite > 0)
+            <div class="ml-4">
+              <form action="{{ route('favorite', [$question->id]) }}" method="POST" class="form-horizontal">
+                @csrf
+              <button type="submit" name="favorite" class="btn btn-warning btn-sm">お気に入りに登録</button>
+            </form>
+            </div>
+            @endunless
+            @endif
         </div>
 
     {{-- 回答　--}}
       <p class="card-subtitle m-3"><i class="fab fa-amilia answer-icon"></i> 回答欄</p>
         <div class="answer-card  mx-3">
           <div class="card bg-light p-3 shadow">
-            <form action="{{ action('QuestionController@answer',[$question->id])}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('answer',[$question->id])}}" method="post" enctype="multipart/form-data">
               @csrf
                 @if (count($errors) > 0)
                   <ul>
@@ -69,7 +80,7 @@
                 </div>
               @else
                 <div class="form-group my-3 col-md-6 p-0">
-                  <input type="text" class="form-control" name="user_name"  placeholder="ユーザー名" required>
+                  <input type="text" class="form-control" name="name"  placeholder="ユーザー名" required>
                 </div>
               @endif
 
@@ -116,6 +127,7 @@
               </div>
               <div class="card-body">
                 <div class="card-text mx-2">
+
                   <p>{{$answer->user->name}} さん</p>
                   <p>{{$answer->answer}}</p>
                 </div>
@@ -125,7 +137,7 @@
             <div class="answer-list-card bg-light shadow mt-5 mb-3">
               <div class="card-body my-3">
                 <div class="card-text mx-2">
-                  
+                  <p>{{$answer->user->name}} さん</p>
                   <p>{{$answer->answer}}</p>
                 </div>
               </div>

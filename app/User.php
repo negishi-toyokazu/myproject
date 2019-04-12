@@ -39,7 +39,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-//追加
+    //追加
     /*protected $guarded = ('id');
 
     public static $rules = array(
@@ -61,5 +61,10 @@ class User extends Authenticatable
     public function bestAnswer()
     {
         return $this->hasMany('Answer::Best_anser');
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany('App\Bookmark');
     }
 }

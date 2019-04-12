@@ -3,26 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Question;
+use App\Category;
+use App\Answer;
+
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  //toppage
+  public function index(Request $request)
+  {
+      $yasais = Category::where('class', '野菜')->get();
+      $fruits = Category::where('class', '果物')->get();
+      $categories = Category::all();
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
-    }
+      return view('question.index', compact('yasais', 'fruits', 'categories'));
+  }
+
+  //keyword
+  public function search(Request $request)
+  {
+      $this->validate($request, ['keyword' => 'required']);
+      $keyword = $request->input('keyword');
+
+      if (!empty($keyword)) {
+          $questions = Question::where('question', 'like', '%'.$keyword.'%')->get();
+      }
+
+      return view('question.search', compact('questions', 'keyword'));
+  }
+
+
 }
