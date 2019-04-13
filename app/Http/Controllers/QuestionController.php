@@ -103,5 +103,4 @@ class QuestionController extends Controller
         return view('question.question_conp');
     }
 
-
 }

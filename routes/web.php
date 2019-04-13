@@ -1,13 +1,26 @@
 <?php
 
-Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
 
 Route::group(['prefix' => 'question'], function () {
     //toppage
-    Route::get('/', 'HomeController@index')->name('top');
+    Route::get('/', 'TopController@index')->name('top');
     Route::post('/', 'QuestionController@create')->name('submit');
     //キーワード検索結果
-    Route::get('/search', 'HomeController@search')->name('search');
+    Route::get('/search', 'TopController@search')->name('search');
     //質問投稿完了画面
     Route::get('/contri', 'QuestionController@contri')->name('contri');
     //質問一覧
@@ -33,7 +46,7 @@ Route::group(['prefix' => 'question'], function () {
     Route::post('/detail/{id}/best', 'AnswerController@best')->name('best');
     //新規登録
     Route::get('/register', 'Auth\RegisterController@getRegister')->name('touroku');
-    Route::post('/register', 'Auth\RegisterController@create')->name('register.post');
+    Route::post('/register', 'Auth\RegisterController@create')->name('register');
 
     //新規登録完了
     Route::get('/register/conp', 'Auth\RegisterController@conpRegister')->name('conp.register');
@@ -41,4 +54,7 @@ Route::group(['prefix' => 'question'], function () {
     //ログイン
     Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');
     Route::post('/signin', 'QuestionController@postSignin');
+
 });
+
+Auth::routes();
