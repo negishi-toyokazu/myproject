@@ -15,7 +15,16 @@ class CreateBookmarksTable extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('status');
+            $table->integer('user_id')->unsigned();
+            $table->integer('question_id')->unsigned();
             $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('question_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 

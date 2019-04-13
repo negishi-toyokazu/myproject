@@ -6,6 +6,7 @@ use App\User;
 use App\Question;
 use App\Category;
 use App\Answer;
+use App\Bookmark;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -60,14 +61,23 @@ class QuestionController extends Controller
         $answers = Answer::where('question_id', $id)->get();
 
         $best_answer = Answer::where('question_id', $id)->where('status', 'ベストアンサー')->get();
-        $has_favorite = Question::where('id', $id)->where('favorite', 'お気に入り')->count();
+        $has_favorite = Bookmark::where('question_id', $id)->where('status', 'お気に入り')->count();
 
         return view('question.content', compact('question', 'id', 'answers', 'best_answer', 'has_favorite'));
     }
 
     public function favorite(Request $request, $id)
     {
-        Question::where('id', $id)->update(['favorite' => 'お気に入り']);
+        $bookmark = new Bookmark;
+        $bookmark->status = "お気に入り";
+        $bookmark->user_id = Auth::id();
+        $bookmark->question_id = $request->input('question_id');
+
+        $form = $request->all();
+        unset($form['_token']);
+        $bookmark->fill($form);
+        $bookmark->save();
+
         return view('question.favorite');
     }
 

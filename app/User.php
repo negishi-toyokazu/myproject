@@ -63,7 +63,7 @@ class User extends Authenticatable
         return $this->hasMany('Answer::Best_anser');
     }
 
-    public function bookmarks()
+    public function bookmark()
     {
         return $this->hasMany('App\Bookmark');
     }

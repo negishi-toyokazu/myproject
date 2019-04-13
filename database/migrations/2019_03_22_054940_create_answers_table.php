@@ -25,6 +25,7 @@ class CreateAnswersTable extends Migration
             $table->index('user_id');
             $table->index('category_id');
             $table->index('question_id');
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');

@@ -32,5 +32,10 @@ class Question extends Model
       return $this->hasMany('App\Answer');
   }
 
+  public function bookmark()
+  {
+      return $this->hasMany('App\Bookmark');
+  }
+
 
 }
