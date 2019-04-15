@@ -108,4 +108,10 @@ class QuestionController extends Controller
     {
         return view('question.question_conp');
     }
+
+    //新規登録完了画面
+    public function conpRegister()
+    {
+        return view('question.register_conp');
+    }
 }

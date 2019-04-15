@@ -50,7 +50,7 @@ Route::group(['prefix' => 'question'], function () {
     Route::post('/register', 'Auth\RegisterController@create')->name('register');
 
     //新規登録完了
-    Route::get('/register/conp', 'Auth\RegisterController@conpRegister')->name('conp.register');
+    Route::get('/register/conp', 'QuestionController@conpRegister')->name('conp.register');
 
     //ログイン
     Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');

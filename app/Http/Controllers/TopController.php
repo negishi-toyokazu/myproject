@@ -34,4 +34,5 @@ class TopController extends Controller
 
         return view('question.search', compact('questions', 'keyword'));
     }
+
 }

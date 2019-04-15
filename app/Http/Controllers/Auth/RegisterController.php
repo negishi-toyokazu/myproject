@@ -68,9 +68,5 @@ class RegisterController extends Controller
     {
         return view('question.register');
     }
-    //新規登録完了画面
-    public function conpRegister()
-    {
-        return view('question.register_conp');
-    }
+    
 }
