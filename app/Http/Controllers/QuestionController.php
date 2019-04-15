@@ -81,6 +81,12 @@ class QuestionController extends Controller
         return view('question.favorite');
     }
 
+    public function favoriteDelete(Request $request)
+    {
+        Bookmark::find($request->id)->delete();
+        return view('question.favorite_delete');
+    }
+
     //質問詳細(投稿者向け)
     public function detail(Request $request, $id)
     {
@@ -102,5 +108,4 @@ class QuestionController extends Controller
     {
         return view('question.question_conp');
     }
-
 }

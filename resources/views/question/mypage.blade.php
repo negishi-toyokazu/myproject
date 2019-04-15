@@ -141,6 +141,7 @@
                   <tr class="font-weight-bold">
                     <th>日時</th>
                     <th>質問内容</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -153,7 +154,12 @@
                     @else
                       <td></td>
                     @endif
-
+                      <td>
+                        <form method="post" action="{{route ('favorite.delete', [$bookmark->id] ) }}">
+                        @csrf
+                        <input type="submit" value="削除" class="btn btn-danger btn-sm">
+                      </form>
+                    </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -164,4 +170,4 @@
             </div>
           </div>
 
-@endsection
+          @endsection

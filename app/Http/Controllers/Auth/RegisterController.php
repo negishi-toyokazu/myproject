@@ -24,7 +24,7 @@ class RegisterController extends Controller
      * @var string
      */
      //追加
-    protected $redirectTo = 'question/register/conp';
+    protected $redirectTo = '/question/register/conp';
     /**
      * Create a new controller instance.
      *
@@ -56,11 +56,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        //return view('question.register_conp');
     }
     //追加
     public function getRegister()

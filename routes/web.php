@@ -31,6 +31,7 @@ Route::group(['prefix' => 'question'], function () {
     Route::get('/content/{id}', 'QuestionController@content')->name('content');
     Route::post('/content/{id}', 'AnswerController@answer')->name('answer');
     Route::post('/content/{id}/favorite', 'QuestionController@favorite')->name('favorite');
+    Route::post('/content/{id}/favorite/delete', 'QuestionController@favoriteDelete')->name('favorite.delete');
     //回答完了画面
     Route::get('/answer', 'AnswerController@conpAnswer');
 
@@ -54,7 +55,6 @@ Route::group(['prefix' => 'question'], function () {
     //ログイン
     Route::get('/sighin', 'Auth\LoginController@getSignin')->name('setuzoku');
     Route::post('/signin', 'QuestionController@postSignin');
-
 });
 
 Auth::routes();
