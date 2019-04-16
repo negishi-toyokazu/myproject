@@ -58,12 +58,14 @@ class QuestionController extends Controller
     public function content(Request $request, $id)
     {
         $question = Question::find($id);
+        $user_id = Auth::id();
         $answers = Answer::where('question_id', $id)->get();
 
         $best_answer = Answer::where('question_id', $id)->where('status', 'ベストアンサー')->get();
         $has_favorite = Bookmark::where('question_id', $id)->where('status', 'お気に入り')->count();
+        $bookmarks = Bookmark::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
 
-        return view('question.content', compact('question', 'id', 'answers', 'best_answer', 'has_favorite'));
+        return view('question.content', compact('question', 'id', 'answers', 'best_answer', 'has_favorite','bookmarks'));
     }
 
     public function favorite(Request $request, $id)

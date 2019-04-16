@@ -47,10 +47,10 @@
               <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="http://127.0.0.1:8000/question/content/{{ route('content', [$question->id]) }}" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
                 <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
             </div>
-            
+
             {{--お気に入り登録ボタン--}}
             @if (Auth::check())
-            @unless ($has_favorite > 0)
+            @if ($has_favorite == 0)
             <div class="ml-4">
               <form action="{{ route('favorite', [$question->id]) }}" method="POST" class="form-horizontal">
                 @csrf
@@ -58,7 +58,16 @@
               <button type="submit" name="favorite" class="btn btn-warning btn-sm" value="お気に入り">お気に入りに登録</button>
             </form>
             </div>
-            @endunless
+            @else
+            <div class="ml-4">
+              @foreach($bookmarks as $bookmark)
+              <form method="post" action="{{route ('favorite.delete', [$bookmark->id] ) }}" class="form-horizontal">
+              @endforeach
+              @csrf
+              <button type="submit" name="favorite" class="btn btn-danger btn-sm">お気に入りから削除</button>
+            </form>
+            </div>
+            @endif
             @endif
         </div>
 
