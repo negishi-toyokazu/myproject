@@ -148,7 +148,11 @@
             <div class="answer-list-card bg-light shadow mt-5 mb-3">
               <div class="card-body my-3">
                 <div class="card-text mx-2">
-                  <p>{{$answer->user->name}} さん</p>
+                  @if($answer->user_id == null)
+                  <p></p>
+                  @else
+                  <p> {{$answer->user->name}}さん</p>
+                  @endif
                   <p>{{$answer->answer}}</p>
                 </div>
               </div>

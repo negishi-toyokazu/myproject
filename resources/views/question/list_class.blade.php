@@ -3,25 +3,27 @@
 @section('content')
 <link href="{{ asset('css/top.css') }}" rel="stylesheet">
   <h3 class="my-4">{{$category->category}}の質問一覧</h3>
-    <div class="col">
-      {{--質問一覧テーブル--}}
-        <div class="question-table mb-5 bg-light">
-          <table class="table">
-            <thead class="thead-light">
-              <tr><th>{{$category->category}}</th></tr>
-            </thead>
-            <tbody>
-              @foreach($questions as $recode)
-                <tr>
-                  <th>
-                    <a class="text-info" href="{{ route('content', [$recode->id]) }}">
-                      {{$recode->question}}
-                    </a>
-                  </th>
-                </tr>
-              @endforeach
-            </tbody>
-          </table>
+    @foreach($questions as $recode)
+      <div class="col-md-8">
+        <div class="card my-3 p-2">
+          <div class="card-header bg-white">
+            <h5 class="card-text">
+              <a class="text-info" href="{{ route('content', [$recode->id]) }}">
+                <i class="fas fa-question-circle"></i> {{$recode->question}}
+              </a>
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><i class="far fa-clock"></i> 投稿日時: {{$recode->created_at->format('Y年m月d日 H時i分')}}</p>
+              </div>
+              <div class="col-md-6">
+                <p><i class="far fa-comment"></i> 回答数:{{count($recode->answer)}}件</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    @endforeach
 @endsection
