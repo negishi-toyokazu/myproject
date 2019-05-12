@@ -49,7 +49,7 @@ class QuestionController extends Controller
     public function listClass(Request $request, $id)
     {
         $category = Category::find($id);
-        $questions = Question::where('category_id', $id)->get();
+        $questions = Question::where('category_id', $id)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('question.list_class', compact('category', 'questions', 'id'));
     }
@@ -65,7 +65,7 @@ class QuestionController extends Controller
         $has_favorite = Bookmark::where('question_id', $id)->where('status', 'お気に入り')->count();
         $bookmarks = Bookmark::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
 
-        return view('question.content', compact('question', 'id', 'answers', 'best_answer', 'has_favorite','bookmarks'));
+        return view('question.content', compact('question', 'id', 'answers', 'best_answer', 'has_favorite', 'bookmarks'));
     }
 
     public function favorite(Request $request, $id)
