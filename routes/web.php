@@ -57,4 +57,7 @@ Route::group(['prefix' => 'question'], function () {
     Route::post('/signin', 'QuestionController@postSignin');
 });
 
+Route::get('/admin/category', 'AdminController@category')->name('category');
+Route::post('/admin/category', 'AdminController@addCategory')->name('add.category');
+
 Auth::routes();

@@ -71,6 +71,9 @@
 
             <div class="container">
               <main class="py-4">
+                  @if (session('message'))
+                    <div class="alert alert-success">{{ session('message') }}</div>
+                  @endif
                   {{-- コンテンツをここに入れる --}}
                   @yield('content')
               </main>
