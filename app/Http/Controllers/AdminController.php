@@ -23,6 +23,6 @@ class AdminController extends Controller
 
         session()->flash('message', 'カテゴリを追加しました。');
 
-        return redirect('admin/categroy');
+        return redirect('question');
     }
 }
