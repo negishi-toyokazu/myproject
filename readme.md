@@ -27,6 +27,7 @@ https://wireframe.cc/nzihrU
 
 ユースケース図
 https://www.draw.io/#G1wcvG-9zvXBIi3RgZEQxCDljjK6XKALaj
+https://gyazo.com/65b14cd0fec39099d243de1c121f2fc0
 
 db
 データ型
