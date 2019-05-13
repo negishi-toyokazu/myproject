@@ -35,24 +35,9 @@
                     @endif
               </div>
 
-              <div class="form-group row">
-                <div class="col-md-6 offset-md-4">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <p class="form-check-label" for="remember">パスワードを保存</p>
-                  </div>
-                </div>
-              </div>
-
-
               <button type="submit" class="btn btn-primary btn-lg btn-block active mb-3 mt-4">
                 ログインする
               </button>
-                @if (Route::has('password.request'))
-                  <a class="btn btn-link" href="{{ route('password.request') }}">
-                    パスワードを忘れましたか?
-                  </a>
-                @endif
           </form>
         </div>
       </div>

@@ -91,7 +91,7 @@
                 </div>
               @else
                 <div class="form-group my-3 col-md-6 p-0">
-                  <input type="text" class="form-control" name="name"  placeholder="ユーザー名" required>
+                  <input type="text" class="form-control" name="user_id"  placeholder="ユーザー名" required>
                 </div>
               @endif
 
@@ -138,8 +138,9 @@
               </div>
               <div class="card-body">
                 <div class="card-text mx-2">
-
-                  <p>{{$answer->user->name}} さん</p>
+                  @if($answer->user_id)
+                  <p><a href="#">{{$answer->user->name}} さん</a></p>
+                  @endif
                   <p>{{$answer->answer}}</p>
                 </div>
               </div>
