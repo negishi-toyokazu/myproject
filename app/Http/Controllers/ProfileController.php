@@ -35,7 +35,6 @@ class ProfileController extends Controller
         return view('question.mypage', compact('questions', 'answers', 'results', 'user', 'bookmarks', 'status'));
     }
 
-
     //プロフィール編集画面
     public function edit(Request $request)
     {
