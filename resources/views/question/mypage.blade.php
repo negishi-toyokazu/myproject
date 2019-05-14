@@ -96,41 +96,5 @@
           </div>
         </div>
 
-      {{--回答--}}
-        <div class="answer-table p-3">
-          <h4 class="my-3">回答した質問一覧</h4>
-            <div class="table-responsive">
-              <table class="table table-hover table-bordered">
-                <thead class="thead-light">
-                  <tr class="font-weight-bold">
-                    <th>日時</th>
-                    <th>質問内容</th>
-                    <th>回答</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($answers as $answer)
-                    <tr>
-                      <td class="font-weight-light">{{$answer->created_at->format('Y年m月d日 H時i分')}}</td>
-                    @if ($answer->question)
-                      <td>{{$answer->question->question}}</td>
-                    @else
-                      <td></td>
-                    @endif
-
-                    @if ($answer->answer)
-                      <td>{{$answer->answer}}</td>
-                    @else
-                      <td></td>
-                    @endif
-                    </tr>
-                  @endforeach
-                </tbody>
-              </table>
-              <div class="">
-                {{ $answers->links() }}
-              </div>
-            </div>
-          </div>
 
           @endsection
