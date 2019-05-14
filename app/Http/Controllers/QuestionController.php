@@ -7,6 +7,7 @@ use App\Question;
 use App\Category;
 use App\Answer;
 use App\Bookmark;
+use Storage;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -23,8 +24,8 @@ class QuestionController extends Controller
 
         $form = $request->all();
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $question->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+            $question->image_path = Storage::disk('s3')->url($path);
         } else {
             $question->image_path = null;
         }

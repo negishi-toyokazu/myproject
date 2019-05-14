@@ -8,6 +8,7 @@ use App\Question;
 use App\Category;
 use App\Answer;
 use App\Bookmark;
+use Storage;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -50,8 +51,8 @@ class ProfileController extends Controller
 
         $form = $request->all();
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $user->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+            $user->image_path = Storage::disk('s3')->url($path);
         }
         unset($form['_token']);
         unset($form['image']);
