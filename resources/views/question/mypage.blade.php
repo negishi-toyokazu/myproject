@@ -9,7 +9,7 @@
       @if($user->image_path == NULL)
         <img class="rounded-circle　p-2　img-fluid img-thumbnail" height="200px" src="{{ asset('image/default_user.jpeg') }}" alt="プロフィール画像">
       @else
-        <img class="rounded-circle p-2 img-fluid img-thumbnail"　width="100%" height="200px" src="{{ asset('storage/image/' . $user->image_path) }}" alt="プロフィール画像">
+        <img class="rounded-circle p-2 img-fluid img-thumbnail"　width="100%" height="200px" src="{{ $user->image_path }}" alt="プロフィール画像">
       @endif
         <div class="content mt-3">
           <h3 class="text-center text-bold text-large">{{$user->name}}</h3>
