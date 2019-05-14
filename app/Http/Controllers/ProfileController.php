@@ -32,7 +32,7 @@ class ProfileController extends Controller
 
         $bookmarks = Bookmark::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('question.mypage', compact('questions', 'answers', 'results', 'status', 'user', 'bookmarks'));
+        return view('question.mypage', compact('questions', 'answers', 'results', 'user', 'bookmarks', 'status'));
     }
 
 
@@ -51,8 +51,8 @@ class ProfileController extends Controller
 
         $form = $request->all();
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $user->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
+            $user->image_path = Storage::disk('s3')->url($path);
         }
         unset($form['_token']);
         unset($form['image']);

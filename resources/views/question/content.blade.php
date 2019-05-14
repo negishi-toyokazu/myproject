@@ -14,7 +14,7 @@
                 <div class="card bg-light p-3">
                   <div class="image-content col-md-8">
                     @if ($question->image_path)
-                      <img src="{{ asset('storage/image/' . $question->image_path) }}" alt="" class="img-fluid img-thumbnail">
+                      <img src="{{ $question->image_path }}" alt="" class="img-fluid img-thumbnail">
                     @endif
                   </div>
 
@@ -139,7 +139,7 @@
               <div class="card-body">
                 <div class="card-text mx-2">
                   @if($answer->user_id)
-                  <p><a href="#"></a></p>
+                  <p><a href="#">{{$answer->user->name}} さん</a></p>
                   @endif
                   <p>{{$answer->answer}}</p>
                 </div>
