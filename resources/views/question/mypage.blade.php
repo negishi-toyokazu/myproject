@@ -58,37 +58,7 @@
                   <th>返信件数</th>
                 </tr>
               </thead>
-              <tbody>
-                @if(count($status)>0)
-                @foreach($results as $result)
-                <tr>
-                  <th class="font-weight-light">{{$result->created_at->format('Y年m月d日 H時i分')}}</th>
-                  @if($result->status == "未解決")
-                  <td><h4><span class="badge badge-pill badge-secondary">{{$result->status}}</span></h4></td>
-                  @else
-                  <td><h4><span class="badge badge-pill badge-danger">{{$result->status}}</span></h4></td>
-                  @endif
-                  <td>{{$result->question}}</td>
-                  <td><a class="btn btn-success" href="{{ route('detail', [$result->id]) }}" role="button">詳細</a></td>
-                  <td>{{ count($result->answer) }}件</td>
-                </tr>
-                @endforeach
-                @else
-                @foreach($questions as $record)
-                  <tr>
-                    <th class="font-weight-light">{{$record->created_at->format('Y年m月d日 H時i分')}}</th>
-                    @if($record->status == "未解決")
-                    <td><h4><span class="badge badge-pill badge-secondary">{{$record->status}}</span></h4></td>
-                    @else
-                    <td><h4><span class="badge badge-pill badge-danger">{{$record->status}}</span></h4></td>
-                    @endif
-                    <td>{{$record->question}}</td>
-                    <td><a class="btn btn-success" href="{{ route('detail', [$record->id]) }}" role="button">詳細</a></td>
-                    <td>{{ count($record->answer) }}件</td>
-                  </tr>
-                @endforeach
-                @endif
-              </tbody>
+              
             </table>
             <div class="mx-auto">
               {{ $questions->links() }}
