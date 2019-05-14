@@ -51,8 +51,8 @@ class ProfileController extends Controller
 
         $form = $request->all();
         if (isset($form['image'])) {
-            $path = Storage::disk('s3')->putFile('/', $form['image'], 'public');
-            $user->image_path = Storage::disk('s3')->url($path);
+            $path = $request->file('image')->store('public/image');
+            $user->image_path = basename($path);
         }
         unset($form['_token']);
         unset($form['image']);

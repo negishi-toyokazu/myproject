@@ -9,7 +9,7 @@
       @if($user->image_path == NULL)
         <img class="rounded-circle　p-2　img-fluid img-thumbnail" height="200px" src="{{ asset('image/default_user.jpeg') }}" alt="プロフィール画像">
       @else
-        <img class="rounded-circle p-2 img-fluid img-thumbnail"　width="100%" height="200px" src="{{ $user->image_path }}" alt="プロフィール画像">
+        <img class="rounded-circle p-2 img-fluid img-thumbnail"　width="100%" height="200px" src="{{ asset('storage/image/' . $user->image_path) }}" alt="プロフィール画像">
       @endif
         <div class="content mt-3">
           <h3 class="text-center text-bold text-large">{{$user->name}}</h3>
@@ -129,43 +129,6 @@
               </table>
               <div class="">
                 {{ $answers->links() }}
-              </div>
-            </div>
-          </div>
-        {{--お気に入り登録リスト--}}
-        <div class="answer-table p-3">
-          <h4 class="my-3">お気に入りの質問一覧</h4>
-            <div class="table-responsive">
-              <table class="table table-hover table-bordered">
-                <thead class="thead-light">
-                  <tr class="font-weight-bold">
-                    <th>日時</th>
-                    <th>質問内容</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($bookmarks as $bookmark)
-                    <tr>
-                      <td class="font-weight-light">{{$bookmark->created_at->format('Y年m月d日 H時i分')}}</td>
-
-                    @if ($bookmark->question_id)
-                      <td>{{$bookmark->question->question}}</td>
-                    @else
-                      <td></td>
-                    @endif
-                      <td>
-                        <form method="post" action="{{route ('favorite.delete', [$bookmark->id] ) }}">
-                        @csrf
-                        <input type="submit" value="削除" class="btn btn-danger btn-sm">
-                      </form>
-                    </td>
-                    </tr>
-                  @endforeach
-                </tbody>
-              </table>
-              <div class="">
-                {{ $bookmarks->links() }}
               </div>
             </div>
           </div>
