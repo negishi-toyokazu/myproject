@@ -4,10 +4,10 @@
 <link href="{{ asset('css/mypage.css') }}" rel="stylesheet">
 
   <h2 class="my-3">マイページ</h2>
-  <div class="col-md-7 my-4">
+  <div class="col-md-6 my-4">
     <div class="card p-3 bg-white">
       @if($user->image_path == NULL)
-        <img class="rounded-circle p-2 img-fluid img-thumbnail" height="200px" src="{{ asset('image/default_user.jpeg') }}" alt="プロフィール画像">
+        <img class="rounded-circle p-2 img-fluid img-thumbnail m-3" height="200px" src="{{ asset('image/default_user.jpeg') }}" alt="プロフィール画像">
       @else
         <img class="rounded-circle p-2 img-fluid img-thumbnail" width="100%" height="200px" src="{{ $user->image_path }}" alt="プロフィール画像">
       @endif

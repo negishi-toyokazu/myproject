@@ -36,6 +36,7 @@ class AnswerController extends Controller
     public function best(Request $request, $id)
     {
         Answer::where('id', $id)->update(['status' => 'ベストアンサー']);
+        session()->flash('message', 'ベストアンサーを選びました');
         return redirect('question/mypage');
     }
 }
