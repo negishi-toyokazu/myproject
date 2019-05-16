@@ -139,7 +139,7 @@
               <div class="card-body">
                 <div class="card-text mx-2">
                   @if($answer->user_id)
-                  <p><a href="#">{{$answer->user->name}} さん</a></p>
+                  <p>{{$answer->user->name}} さん</p>
                   @endif
                   <p>{{$answer->answer}}</p>
                 </div>
