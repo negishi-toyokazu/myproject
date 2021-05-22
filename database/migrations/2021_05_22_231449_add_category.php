@@ -14,7 +14,7 @@ class AddCategory extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            DB::table('users')->insert(
+            DB::table('categories')->insert(
                 array(
                     ['category' => 'きゅうり',
                     'class' => '野菜'],
