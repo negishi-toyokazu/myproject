@@ -19,7 +19,7 @@ class AddCategory extends Migration
                     ['category' => 'きゅうり',
                     'class' => '野菜'],
                     ['category' => 'なす',
-                    'class' => '野菜']
+                    'class' => '野菜'],
                     ['category' => 'みかん',
                     'class' => '果物']
                     ['category' => 'りんご',
